@@ -7,7 +7,7 @@ export default function CTA() {
             Ready to monitor your clusters?
           </h2>
           <p className="mt-4 text-lg text-blue-100 max-w-2xl mx-auto">
-            Join thousands of DevOps engineers who trust Moniple to keep their clusters healthy.
+            Start monitoring your Kubernetes clusters in minutes. Free forever, no credit card required.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a

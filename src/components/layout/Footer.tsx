@@ -1,29 +1,12 @@
 import Link from 'next/link';
 
 export default function Footer() {
-  const navigation = {
-    product: [
-      { name: 'Features', href: '/features' },
-      { name: 'Pricing', href: '/pricing' },
-      { name: 'Changelog', href: '#' },
-    ],
-    company: [
-      { name: 'About', href: '#' },
-      { name: 'Contact', href: '/contact' },
-      { name: 'Blog', href: '#' },
-    ],
-    legal: [
-      { name: 'Privacy', href: '#' },
-      { name: 'Terms', href: '#' },
-    ],
-  };
-
   return (
     <footer className="bg-dark text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
+          <div>
             <Link href="/" className="flex items-center gap-2">
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -32,57 +15,62 @@ export default function Footer() {
               </div>
               <span className="text-xl font-bold">Moniple</span>
             </Link>
-            <p className="mt-4 text-gray-400 text-sm">
+            <p className="mt-4 text-gray-400 text-sm max-w-xs">
               Monitor your Kubernetes clusters from anywhere. Real-time metrics, multi-cluster management, all in one place.
             </p>
           </div>
 
-          {/* Product */}
+          {/* Navigation */}
           <div>
             <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">Product</h3>
             <ul className="mt-4 space-y-3">
-              {navigation.product.map((item) => (
-                <li key={item.name}>
-                  <Link href={item.href} className="text-gray-400 hover:text-white transition-colors">
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href="/features" className="text-gray-400 hover:text-white transition-colors">
+                  Features
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" className="text-gray-400 hover:text-white transition-colors">
+                  Pricing
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Get Started */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">Company</h3>
+            <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">Get Started</h3>
             <ul className="mt-4 space-y-3">
-              {navigation.company.map((item) => (
-                <li key={item.name}>
-                  <Link href={item.href} className="text-gray-400 hover:text-white transition-colors">
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">Legal</h3>
-            <ul className="mt-4 space-y-3">
-              {navigation.legal.map((item) => (
-                <li key={item.name}>
-                  <Link href={item.href} className="text-gray-400 hover:text-white transition-colors">
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="https://app.moniple.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Launch App
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:info@moniple.com"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  info@moniple.com
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-800">
           <p className="text-center text-gray-400 text-sm">
-            © {new Date().getFullYear()} Moniple. All rights reserved.
+            &copy; {new Date().getFullYear()} Moniple. All rights reserved.
           </p>
         </div>
       </div>
