@@ -24,23 +24,26 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "$10",
+    price: "$0",
+    originalPrice: "$10",
     period: "/month",
+    betaBadge: true,
     description: "For power users and teams who need advanced features.",
     features: [
       "Everything in Free",
       "Unlimited clusters",
       "Cluster sharing",
+      "Team management",
       "Push notification alerts",
       "Priority support",
     ],
     cta: {
-      text: "Coming Soon",
-      href: "#",
-      primary: false,
+      text: "Start Free Beta",
+      href: "https://app.moniple.com",
+      primary: true,
     },
     highlighted: false,
-    comingSoon: true,
+    comingSoon: false,
   },
   {
     name: "On-Premise",
@@ -107,6 +110,14 @@ export default function PricingPage() {
                 </div>
               )}
 
+              {plan.betaBadge && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span className="bg-green-500 text-white text-sm font-semibold px-4 py-1 rounded-full">
+                    Free During Beta
+                  </span>
+                </div>
+              )}
+
               <h2
                 className={`text-2xl font-bold ${plan.highlighted ? "text-white" : "text-dark dark:text-white"}`}
               >
@@ -119,8 +130,13 @@ export default function PricingPage() {
               </p>
 
               <div className="mt-6">
+                {plan.originalPrice && (
+                  <span className="text-xl font-semibold text-gray-400 line-through mr-2">
+                    {plan.originalPrice}
+                  </span>
+                )}
                 <span
-                  className={`text-4xl font-bold ${plan.highlighted ? "text-white" : "text-dark dark:text-white"}`}
+                  className={`text-4xl font-bold ${plan.highlighted ? "text-white" : plan.betaBadge ? "text-green-400" : "text-dark dark:text-white"}`}
                 >
                   {plan.price}
                 </span>
@@ -239,6 +255,41 @@ export default function PricingPage() {
                 <tr className="border-b border-gray-100 dark:border-gray-700">
                   <td className="py-4 px-6 text-gray-600 dark:text-gray-300">
                     Cluster Sharing
+                  </td>
+                  <td className="py-4 px-6 text-center">
+                    <svg
+                      className="w-5 h-5 mx-auto text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </td>
+                  <td className="py-4 px-6 text-center">
+                    <svg
+                      className="w-5 h-5 mx-auto text-primary"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </td>
+                </tr>
+                <tr className="border-b border-gray-100 dark:border-gray-700">
+                  <td className="py-4 px-6 text-gray-600 dark:text-gray-300">
+                    Team Management
                   </td>
                   <td className="py-4 px-6 text-center">
                     <svg
@@ -408,12 +459,12 @@ export default function PricingPage() {
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-dark dark:text-white">
-                When will Pro features be available?
+                Is Pro really free during beta?
               </h3>
               <p className="mt-2 text-gray-600 dark:text-gray-300">
-                Pro features including unlimited clusters, cluster sharing, and
-                push notifications are currently in development. Sign up for
-                Free now and we'll notify you when they're ready!
+                Yes! During the beta period, all Pro features including unlimited
+                clusters, cluster sharing, team management, and push notifications
+                are completely free. After beta, the price will be $10/month.
               </p>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
