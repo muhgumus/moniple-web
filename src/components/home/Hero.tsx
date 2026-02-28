@@ -39,7 +39,7 @@ export default function Hero() {
               </svg>
             </a>
             <a
-              href="/features"
+              href="#app-preview"
               className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 px-8 py-3 text-base font-semibold text-dark dark:text-white shadow-sm ring-1 ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
             >
               Learn More

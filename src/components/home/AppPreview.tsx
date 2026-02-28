@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function AppPreview() {
   return (
-    <section className="relative py-20 sm:py-28 bg-gray-50 dark:bg-gray-900/50">
+    <section id="app-preview" className="relative py-20 sm:py-28 bg-gray-50 dark:bg-gray-900/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
