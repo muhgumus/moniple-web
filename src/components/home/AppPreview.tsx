@@ -64,29 +64,18 @@ export default function AppPreview() {
             </div>
           </div>
 
-          {/* Mobile Screenshot - iPhone frame */}
+          {/* Mobile Screenshot - Minimal frame */}
           <div className="relative w-[180px] sm:w-[200px] mx-auto mt-8 lg:mt-0 lg:w-[200px] lg:absolute lg:-right-4 lg:-bottom-12 z-10">
-            <div className="relative rounded-[2rem] shadow-2xl bg-black p-[5px] ring-1 ring-gray-700" style={{ aspectRatio: '1290/2796' }}>
-              {/* iPhone frame inner */}
-              <div className="relative rounded-[1.7rem] overflow-hidden bg-black w-full h-full">
-                {/* Dynamic Island */}
-                <div className="absolute top-[6px] left-1/2 -translate-x-1/2 w-[60px] h-[18px] bg-black rounded-full z-20"></div>
-                {/* Screen content */}
+            <div className="relative rounded-[1.5rem] shadow-2xl bg-gray-800 p-[6px] ring-1 ring-gray-600/50">
+              <div className="relative rounded-[1.2rem] overflow-hidden bg-gray-900">
                 <Image
                   src="/images/app/dashboard-mobile.png"
                   alt="Moniple Dashboard - Mobile View"
                   width={1290}
                   height={2796}
-                  className="absolute inset-0 w-full h-full object-contain object-top"
+                  className="w-full h-auto"
                 />
-                {/* Home indicator */}
-                <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-[70px] h-[3px] bg-white/30 rounded-full z-20"></div>
               </div>
-              {/* Side buttons */}
-              <div className="absolute right-[-2px] top-[18%] w-[2px] h-[8%] bg-gray-700 rounded-l-sm"></div>
-              <div className="absolute left-[-2px] top-[15%] w-[2px] h-[5%] bg-gray-700 rounded-r-sm"></div>
-              <div className="absolute left-[-2px] top-[22%] w-[2px] h-[8%] bg-gray-700 rounded-r-sm"></div>
-              <div className="absolute left-[-2px] top-[32%] w-[2px] h-[8%] bg-gray-700 rounded-r-sm"></div>
             </div>
             {/* Label */}
             <div className="mt-4 text-center">
