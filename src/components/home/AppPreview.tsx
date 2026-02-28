@@ -77,7 +77,7 @@ export default function AppPreview() {
                   alt="Moniple Dashboard - Mobile View"
                   width={1290}
                   height={2796}
-                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  className="absolute inset-0 w-full h-full object-contain object-top"
                 />
                 {/* Home indicator */}
                 <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-[70px] h-[3px] bg-white/30 rounded-full z-20"></div>
