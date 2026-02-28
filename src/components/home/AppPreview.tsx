@@ -64,22 +64,29 @@ export default function AppPreview() {
             </div>
           </div>
 
-          {/* Mobile Screenshot */}
-          <div className="relative w-48 sm:w-56 mx-auto mt-8 lg:mt-0 lg:w-52 lg:absolute lg:-right-6 lg:-bottom-12 z-10">
-            <div className="rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-white/10 bg-gray-900 p-2">
-              {/* Phone notch */}
-              <div className="relative">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-gray-900 rounded-b-2xl z-10"></div>
-                <div className="rounded-[1.5rem] overflow-hidden">
-                  <Image
-                    src="/images/app/dashboard-mobile.png"
-                    alt="Moniple Dashboard - Mobile View"
-                    width={1000}
-                    height={1346}
-                    className="w-full h-auto"
-                  />
-                </div>
+          {/* Mobile Screenshot - iPhone frame */}
+          <div className="relative w-[180px] sm:w-[200px] mx-auto mt-8 lg:mt-0 lg:w-[200px] lg:absolute lg:-right-4 lg:-bottom-12 z-10">
+            <div className="relative rounded-[2rem] shadow-2xl bg-black p-[5px] ring-1 ring-gray-700" style={{ aspectRatio: '1290/2796' }}>
+              {/* iPhone frame inner */}
+              <div className="relative rounded-[1.7rem] overflow-hidden bg-black w-full h-full">
+                {/* Dynamic Island */}
+                <div className="absolute top-[6px] left-1/2 -translate-x-1/2 w-[60px] h-[18px] bg-black rounded-full z-20"></div>
+                {/* Screen content */}
+                <Image
+                  src="/images/app/dashboard-mobile.png"
+                  alt="Moniple Dashboard - Mobile View"
+                  width={1290}
+                  height={2796}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                />
+                {/* Home indicator */}
+                <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-[70px] h-[3px] bg-white/30 rounded-full z-20"></div>
               </div>
+              {/* Side buttons */}
+              <div className="absolute right-[-2px] top-[18%] w-[2px] h-[8%] bg-gray-700 rounded-l-sm"></div>
+              <div className="absolute left-[-2px] top-[15%] w-[2px] h-[5%] bg-gray-700 rounded-r-sm"></div>
+              <div className="absolute left-[-2px] top-[22%] w-[2px] h-[8%] bg-gray-700 rounded-r-sm"></div>
+              <div className="absolute left-[-2px] top-[32%] w-[2px] h-[8%] bg-gray-700 rounded-r-sm"></div>
             </div>
             {/* Label */}
             <div className="mt-4 text-center">
@@ -97,7 +104,7 @@ export default function AppPreview() {
                     d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
                   />
                 </svg>
-                Mobile Responsive
+                Mobile Application
               </span>
             </div>
           </div>
