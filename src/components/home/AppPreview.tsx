@@ -102,7 +102,12 @@ export default function AppPreview() {
         {/* Platform badges */}
         <div className="mt-20 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
           {/* Web badge - available */}
-          <div className="flex items-center gap-3 bg-white dark:bg-gray-800 rounded-xl px-6 py-3 shadow-md ring-1 ring-gray-200 dark:ring-gray-700">
+          <a
+            href="https://app.moniple.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 bg-white dark:bg-gray-800 rounded-xl px-6 py-3 shadow-md ring-1 ring-gray-200 dark:ring-gray-700 hover:ring-primary hover:shadow-lg transition-all duration-200 cursor-pointer"
+          >
             <svg
               className="w-8 h-8 text-primary"
               fill="none"
@@ -124,7 +129,7 @@ export default function AppPreview() {
                 Available Now
               </div>
             </div>
-          </div>
+          </a>
 
           {/* iOS badge - coming soon */}
           <div className="flex items-center gap-3 bg-white dark:bg-gray-800 rounded-xl px-6 py-3 shadow-md ring-1 ring-gray-200 dark:ring-gray-700 opacity-80">
