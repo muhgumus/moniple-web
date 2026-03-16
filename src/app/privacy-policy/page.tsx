@@ -1,5 +1,5 @@
 export default function PrivacyPolicyPage() {
-  const lastUpdated = 'March 11, 2026';
+  const lastUpdated = 'March 16, 2026';
   const contactEmail = 'info@moniple.com';
 
   return (
@@ -220,9 +220,33 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
+          {/* Account Deletion */}
+          <section id="account-deletion">
+            <h2 className="text-2xl font-bold text-white mb-4">10. Account Deletion</h2>
+            <p className="text-gray-400">
+              You may request the deletion of your Moniple account and all associated data at any time.
+              Upon deletion, the following data will be permanently removed within 30 days:
+            </p>
+            <ul className="list-disc ml-6 mt-3 space-y-1 text-gray-400">
+              <li>Your account information (email, profile data)</li>
+              <li>All clusters registered under your account</li>
+              <li>Historical metrics and monitoring data</li>
+              <li>Team memberships and shared access permissions</li>
+              <li>Invitation history</li>
+            </ul>
+            <p className="text-gray-400 mt-4">
+              To request account deletion, please send an email to{' '}
+              <a href="mailto:info@nairotech.com" className="text-primary hover:text-primary/80 transition-colors">
+                info@nairotech.com
+              </a>{' '}
+              from the email address associated with your account. Include &quot;Account Deletion Request&quot;
+              in the subject line. We will process your request and confirm deletion within 30 days.
+            </p>
+          </section>
+
           {/* Contact */}
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4">10. Contact Us</h2>
+            <h2 className="text-2xl font-bold text-white mb-4">11. Contact Us</h2>
             <p className="text-gray-400">
               If you have questions about this Privacy Policy or how your data is handled:
             </p>
