@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 
 const freeFeatures = [
-  "Unlimited clusters",
-  "Unlimited team members",
+  "Up to 5 clusters",
+  "Up to 5 team members per team",
   "Realtime metrics & alerts",
   "1-hour & 6-hour history",
   "Moniple AI Doctor — 4 scans/day",
@@ -15,6 +15,8 @@ const freeFeatures = [
 
 const proFeatures = [
   "Everything in Free",
+  "Unlimited clusters",
+  "Unlimited team members",
   "30-day metric history",
   "Moniple AI Doctor — 25 scans/day",
   "AI Doctor cron schedule min 1h",
