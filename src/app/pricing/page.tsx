@@ -6,7 +6,8 @@ import { useState } from "react";
 const freeFeatures = [
   "Unlimited clusters",
   "Unlimited team members",
-  "Realtime metrics, alerts & history",
+  "Realtime metrics & alerts",
+  "1-hour & 6-hour history",
   "Moniple AI Doctor — 4 scans/day",
   "AI Doctor cron schedule min 6h",
   "Custom LLM (your API key) — unlimited",
@@ -14,6 +15,7 @@ const freeFeatures = [
 
 const proFeatures = [
   "Everything in Free",
+  "30-day metric history",
   "Moniple AI Doctor — 25 scans/day",
   "AI Doctor cron schedule min 1h",
   "Priority email support",
