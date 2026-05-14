@@ -20,8 +20,8 @@ export default function RefundPolicyPage() {
             <h2 className="text-2xl font-bold text-white mb-4">1. Overview</h2>
             <p className="text-gray-400">
               Moniple offers monthly and annual subscription plans (Moniple Pro) billed through{' '}
-              <strong className="text-gray-300">Lemon Squeezy</strong>, our payment processor and
-              Merchant of Record. Lemon Squeezy handles all payment processing, VAT/tax collection,
+              <strong className="text-gray-300">Paddle</strong>, our payment processor and
+              Merchant of Record. Paddle handles all payment processing, VAT/tax collection,
               and chargebacks on our behalf. By subscribing to Moniple Pro you agree to this Refund
               &amp; Cancellation Policy.
             </p>

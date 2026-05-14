@@ -174,8 +174,8 @@ export default function PricingPage() {
         {/* Payment note */}
         <p className="mt-8 text-center text-sm text-gray-500 max-w-2xl mx-auto">
           Payments processed by{" "}
-          <span className="text-gray-400">Lemon Squeezy</span> (Merchant of
-          Record). VAT/tax handled automatically.{" "}
+          <span className="text-gray-400">Paddle</span> (Merchant of Record).
+          VAT/tax handled automatically.{" "}
           <Link
             href="/refund-policy"
             className="text-primary hover:text-primary/80 transition-colors underline"
@@ -224,7 +224,7 @@ export default function PricingPage() {
                 What payment methods are accepted?
               </h3>
               <p className="mt-2 text-gray-400">
-                Lemon Squeezy supports all major credit and debit cards (Visa,
+                Paddle supports all major credit and debit cards (Visa,
                 Mastercard, American Express) as well as PayPal in supported
                 regions.
               </p>
