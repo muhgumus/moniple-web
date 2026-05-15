@@ -11,7 +11,7 @@ const freeFeatures = [
   "Up to 5 team members",
   "Realtime metrics & alerts",
   "1-hour & 6-hour history",
-  "Moniple AI Doctor — 4 scans/day",
+  "Moniple AI Doctor — 5 scans/day",
   "AI Doctor cron schedule min 6h",
   "Custom LLM (your API key) — unlimited",
   "Community support",
@@ -22,8 +22,10 @@ const proFeatures = [
   "Unlimited clusters",
   "Unlimited per-seat team members",
   "30-day metric history",
-  "Moniple AI Doctor — 25 scans/day",
+  "Moniple AI Doctor — 100 scans/day",
   "AI Doctor cron schedule min 1h",
+  "Approve AI diagnostic actions",
+  "Realtime notifications (coming soon)",
   "Email support",
 ];
 
@@ -39,6 +41,7 @@ const teamFeatures = [
 const enterpriseFeatures = [
   "Everything in Team",
   "On-premise deployment",
+  "Unlimited AI Doctor scans",
   "Dedicated support engineer",
   "Custom SLA",
   "SSO + audit logs",
@@ -388,6 +391,24 @@ const [yearly, setYearly] = useState(false);
                   Refund &amp; Cancellation Policy
                 </Link>{" "}
                 for details.
+              </p>
+            </div>
+            <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white">
+                How many AI Doctor scans can I run?
+              </h3>
+              <p className="mt-2 text-gray-400">
+                Free: 5 scans/day. Pro &amp; Team: 100 scans/day. Enterprise:
+                unlimited.
+              </p>
+            </div>
+            <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white">
+                Can I approve AI-suggested actions?
+              </h3>
+              <p className="mt-2 text-gray-400">
+                Yes, on Pro and above. Free users can view recommendations but
+                cannot approve or execute actions.
               </p>
             </div>
             <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
