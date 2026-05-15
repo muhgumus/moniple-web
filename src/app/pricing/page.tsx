@@ -40,11 +40,12 @@ const teamFeatures = [
 
 const enterpriseFeatures = [
   "Everything in Team",
+  "Custom limits — clusters, scans, schedule interval (fully parametric)",
+  "Unlimited AI Doctor scans (by default)",
   "On-premise deployment",
-  "Unlimited AI Doctor scans",
+  "SSO + audit logs",
   "Dedicated support engineer",
   "Custom SLA",
-  "SSO + audit logs",
   "SOC2 compliance package",
   "Custom data residency",
 ];
@@ -67,13 +68,6 @@ function CheckIcon({ className }: { className?: string }) {
   );
 }
 
-function EnterpriseBadge() {
-  return (
-    <span className="inline-flex items-center gap-1 rounded-full bg-purple-500/20 px-2 py-0.5 text-xs font-semibold text-purple-300">
-      Enterprise only
-    </span>
-  );
-}
 
 export default function PricingPage() {
   
@@ -256,9 +250,11 @@ const [yearly, setYearly] = useState(false);
 
           {/* Enterprise Card */}
           <div className="rounded-2xl p-6 bg-gradient-to-b from-purple-500/15 to-purple-500/5 border border-purple-500/40 flex flex-col">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
               <h2 className="text-xl font-bold text-white">Enterprise</h2>
-              <EnterpriseBadge />
+              <span className="inline-flex items-center rounded-full bg-purple-500/20 px-2 py-0.5 text-xs font-semibold text-purple-300">
+                Custom
+              </span>
             </div>
             <p className="mt-2 text-sm text-gray-300">
               On-premise deployment, dedicated support, custom SLA.
@@ -364,6 +360,23 @@ const [yearly, setYearly] = useState(false);
                   Contact us
                 </a>{" "}
                 to discuss your requirements.
+              </p>
+            </div>
+            <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white">
+                What does Enterprise include?
+              </h3>
+              <p className="mt-2 text-gray-400">
+                Enterprise plans are fully customizable. We tune cluster limits,
+                scan quotas, schedule frequency, retention periods, and feature
+                flags (SSO, audit logs, approval workflows) per organization.{" "}
+                <a
+                  href="mailto:enterprise@moniple.com?subject=Moniple%20Enterprise%20Inquiry"
+                  className="text-primary hover:text-primary/80 transition-colors underline"
+                >
+                  Contact us
+                </a>{" "}
+                for a tailored quote.
               </p>
             </div>
             <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
