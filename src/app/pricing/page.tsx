@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState } from "react"
+import { useEffect } from 'react'
+import { getPaddle } from '@/lib/paddle';
 import { PricingCTA } from "@/components/pricing/PricingCTA";
 
 const freeFeatures = [
@@ -71,7 +73,9 @@ function EnterpriseBadge() {
 }
 
 export default function PricingPage() {
-  const [yearly, setYearly] = useState(false);
+  
+  useEffect(() => { getPaddle().catch(console.error); }, []);
+const [yearly, setYearly] = useState(false);
 
   return (
     <div className="py-20">
