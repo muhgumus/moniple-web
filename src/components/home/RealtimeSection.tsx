@@ -1,18 +1,37 @@
 const points = [
   {
-    title: "Sub-second latency",
+    title: "No polling, no auto-refresh",
     description:
-      "Agent push to dashboard in under 100ms via Supabase Realtime WebSocket.",
+      "Your dashboard updates the moment new data lands — no manual refresh, no countdown timer.",
   },
   {
-    title: "No 30-second polling",
+    title: "WebSocket fanout",
     description:
-      "When something breaks, you see it immediately — not on the next refresh interval.",
+      "Every connected device sees the change at the same time. Open a tab on your laptop and the app on your phone — both stay in sync.",
   },
   {
-    title: "Live notifications",
+    title: "Built on Supabase Realtime",
     description:
-      "Cluster invites, team activity and AI diagnostic reports appear instantly across all your devices.",
+      "Proven, scalable WebSocket infrastructure. Self-hostable for Enterprise customers who need full data sovereignty.",
+  },
+];
+
+const flowSteps = [
+  {
+    label: "Your cluster",
+    sublabel: "Prometheus / VictoriaMetrics",
+  },
+  {
+    label: "Moniple Agent",
+    sublabel: "pulls metrics every cycle",
+  },
+  {
+    label: "Moniple Server",
+    sublabel: "receives + fans out via WebSocket",
+  },
+  {
+    label: "Your dashboard",
+    sublabel: "updates instantly (every device)",
   },
 ];
 
@@ -26,13 +45,14 @@ export default function RealtimeSection() {
               Realtime
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-dark dark:text-white">
-              Real-time, not{" "}
-              <span className="text-primary">30-second polling</span>
+              Near-realtime updates,{" "}
+              <span className="text-primary">no manual refresh</span>
             </h2>
             <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-              Metric updates push via WebSocket. Pod fails? You see it in under
-              a second. Built on Supabase Realtime so the same speed reaches
-              your phone, your laptop and every browser tab you have open.
+              Your agent collects metrics from your cluster on a continuous
+              schedule and pushes snapshots to Moniple. The moment they arrive,
+              our WebSocket layer delivers them to your dashboard — every browser
+              tab, every phone, every desktop app stays in sync without polling.
             </p>
 
             <div className="mt-8 space-y-5">
@@ -66,7 +86,7 @@ export default function RealtimeSection() {
             </div>
           </div>
 
-          {/* Latency callout */}
+          {/* How updates flow diagram */}
           <div className="relative">
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 ring-1 ring-gray-200 dark:ring-gray-700 shadow-xl">
               <div className="flex items-center gap-3 mb-6">
@@ -75,36 +95,45 @@ export default function RealtimeSection() {
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                 </div>
                 <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                  Live agent connection
+                  How updates flow
                 </span>
               </div>
 
-              <div className="space-y-4">
-                <div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">
-                    p95 push-to-dashboard latency
+              <div className="space-y-3">
+                {flowSteps.map((step, idx) => (
+                  <div key={step.label}>
+                    <div className="flex items-start gap-3 rounded-xl bg-gray-50 dark:bg-gray-700/50 px-4 py-3">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center text-xs font-bold text-primary mt-0.5">
+                        {idx + 1}
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-dark dark:text-white">
+                          {step.label}
+                        </div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                          {step.sublabel}
+                        </div>
+                      </div>
+                    </div>
+                    {idx < flowSteps.length - 1 && (
+                      <div className="flex justify-center py-1 text-gray-300 dark:text-gray-600">
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </div>
+                    )}
                   </div>
-                  <div className="text-4xl font-bold text-primary">&lt; 100ms</div>
-                </div>
-                <div className="h-px bg-gray-200 dark:bg-gray-700"></div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">
-                      Best load test
-                    </div>
-                    <div className="text-xl font-semibold text-dark dark:text-white">
-                      508 RPS
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">
-                      Error rate
-                    </div>
-                    <div className="text-xl font-semibold text-dark dark:text-white">
-                      0%
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
