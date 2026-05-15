@@ -43,8 +43,20 @@ export async function getPaddle(): Promise<Paddle> {
       // `settings.successUrl` is ignored when Paddle auto-opens from URL param,
       // so we navigate manually on the completion event.
       if (event?.name === 'checkout.completed') {
-        console.info('Paddle checkout completed — redirecting to app');
-        window.location.href = 'https://app.moniple.com/dashboard';
+        // Defensive: event.data.items[0].price_id (SDK v1) or
+        // event.data.items[0].price.id (SDK v2) — try both.
+        const item = event.data?.items?.[0];
+        const priceId: string =
+          (item as { price_id?: string })?.price_id ||
+          (item as { price?: { id?: string } })?.price?.id ||
+          '';
+        const pricesEntries = Object.entries(PADDLE_PRICES) as Array<[PaddlePlan, string]>;
+        const matchedPlan = pricesEntries.find(([, id]) => id === priceId)?.[0] || '';
+        const url = matchedPlan
+          ? `https://app.moniple.com/dashboard?welcome=${matchedPlan}`
+          : 'https://app.moniple.com/dashboard?welcome=1';
+        console.info('Paddle checkout completed →', url);
+        window.location.href = url;
       }
     },
   });
