@@ -37,6 +37,16 @@ export async function getPaddle(): Promise<Paddle> {
   const paddle = await initializePaddle({
     environment: isSandbox ? 'sandbox' : 'production',
     token,
+    eventCallback: (event) => {
+      // Global handler — fires regardless of how checkout was opened (manual
+      // Checkout.open() or auto via ?_ptxn=... query param). The per-call
+      // `settings.successUrl` is ignored when Paddle auto-opens from URL param,
+      // so we navigate manually on the completion event.
+      if (event?.name === 'checkout.completed') {
+        console.info('Paddle checkout completed — redirecting to app');
+        window.location.href = 'https://app.moniple.com/dashboard';
+      }
+    },
   });
   if (!paddle) throw new Error('Paddle failed to initialize');
   paddleInstance = paddle;
