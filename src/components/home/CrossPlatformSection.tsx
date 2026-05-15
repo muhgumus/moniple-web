@@ -9,28 +9,15 @@ const badges: AppBadge[] = [
   },
   {
     platform: "ios",
-    state: "coming-soon",
-    label: "Coming soon to App Store",
+    state: "available",
+    label: "Download on the App Store",
+    href: "https://apps.apple.com/tr/app/moniple-k8s-monitoring/id6761530619?l=tr",
   },
   {
     platform: "android",
-    state: "coming-soon",
-    label: "Coming soon to Google Play",
-  },
-  {
-    platform: "macos",
-    state: "coming-soon",
-    label: "Coming soon",
-  },
-  {
-    platform: "windows",
-    state: "coming-soon",
-    label: "Coming soon",
-  },
-  {
-    platform: "linux",
-    state: "coming-soon",
-    label: "Coming soon",
+    state: "available",
+    label: "Get it on Google Play",
+    href: "https://play.google.com/store/apps/details?id=com.nairotech.moniple",
   },
 ];
 
@@ -50,20 +37,12 @@ export default function CrossPlatformSection() {
             <span className="text-primary">on every screen</span>
           </h2>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            One codebase. Six platforms. Built with Flutter so the same fast,
+            One codebase. Three platforms. Built with Flutter so the same fast,
             native experience follows you from your laptop to your phone.
           </p>
         </div>
 
         <AppDownloadBadges badges={badges} />
-
-        <div className="mt-10 text-center text-sm text-gray-500 dark:text-gray-400">
-          Mobile &amp; desktop apps are in private beta.{" "}
-          <a href="/contact" className="text-primary hover:underline">
-            Get early access
-          </a>
-          .
-        </div>
       </div>
     </section>
   );

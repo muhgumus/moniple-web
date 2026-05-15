@@ -85,22 +85,26 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <span className="text-gray-400 text-sm inline-flex items-center gap-2">
+                <a
+                  href="https://apps.apple.com/tr/app/moniple-k8s-monitoring/id6761530619?l=tr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors text-sm inline-flex items-center gap-2"
+                >
                   iOS
-                  <span className="text-xs text-amber-400">Coming soon</span>
-                </span>
+                  <span className="text-xs text-emerald-400">Available</span>
+                </a>
               </li>
               <li>
-                <span className="text-gray-400 text-sm inline-flex items-center gap-2">
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.nairotech.moniple"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors text-sm inline-flex items-center gap-2"
+                >
                   Android
-                  <span className="text-xs text-amber-400">Coming soon</span>
-                </span>
-              </li>
-              <li>
-                <span className="text-gray-400 text-sm inline-flex items-center gap-2">
-                  Desktop
-                  <span className="text-xs text-amber-400">Coming soon</span>
-                </span>
+                  <span className="text-xs text-emerald-400">Available</span>
+                </a>
               </li>
             </ul>
           </div>
