@@ -13,17 +13,31 @@ export async function getPaddle(): Promise<Paddle> {
   return paddle;
 }
 
-// TODO: Replace these with real price IDs from Paddle dashboard after creating prices
+// Live Paddle price IDs — created via Paddle API (see CLAUDE.md 2026-05-15 session)
+// Pro product:  pro_01krme28yq1cv2aqkkynnk6kk1
+// Team product: pro_01krn8sa5yxjrkhy3831mq92hg
 export const PADDLE_PRICES = {
-  monthly: 'pri_REPLACE_WITH_MONTHLY_PRICE_ID',
-  yearly: 'pri_REPLACE_WITH_YEARLY_PRICE_ID',
-};
+  proMonthly: 'pri_01krmf65p4mh6dcmb8js9gz6gv', // $9.90 / seat / month
+  proYearly: 'pri_01krn8s9v35d5pndenxwnaz035', // $99 / seat / year (~17% off)
+  teamMonthly: 'pri_01krn8spj7prj46w7gzh5cgv7y', // $34.90 / 5-seat block / month
+  teamYearly: 'pri_01krn8sptvttjzwfr59m0wm0eh', // $348 / 5-seat block / year
+} as const;
 
-export async function openCheckout(plan: 'monthly' | 'yearly', customerEmail?: string) {
+export type PaddlePlan = keyof typeof PADDLE_PRICES;
+
+interface OpenCheckoutOptions {
+  quantity?: number;
+  customerEmail?: string;
+}
+
+export async function openCheckout(
+  plan: PaddlePlan,
+  options?: OpenCheckoutOptions
+): Promise<void> {
   const paddle = await getPaddle();
   paddle.Checkout.open({
-    items: [{ priceId: PADDLE_PRICES[plan], quantity: 1 }],
-    customer: customerEmail ? { email: customerEmail } : undefined,
+    items: [{ priceId: PADDLE_PRICES[plan], quantity: options?.quantity ?? 1 }],
+    customer: options?.customerEmail ? { email: options.customerEmail } : undefined,
     settings: {
       displayMode: 'overlay',
       theme: 'dark',
