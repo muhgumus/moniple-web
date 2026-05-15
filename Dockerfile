@@ -12,6 +12,12 @@ RUN npm ci
 # Copy source files
 COPY . .
 
+# Build-time Paddle environment switch
+ARG NEXT_PUBLIC_PADDLE_ENV=production
+ARG NEXT_PUBLIC_PADDLE_SANDBOX_TOKEN=""
+ENV NEXT_PUBLIC_PADDLE_ENV=$NEXT_PUBLIC_PADDLE_ENV
+ENV NEXT_PUBLIC_PADDLE_SANDBOX_TOKEN=$NEXT_PUBLIC_PADDLE_SANDBOX_TOKEN
+
 # Build the static site
 RUN npm run build
 
