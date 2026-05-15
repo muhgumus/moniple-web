@@ -1,17 +1,23 @@
-import Hero from '@/components/home/Hero';
-import AppPreview from '@/components/home/AppPreview';
-import Features from '@/components/home/Features';
-import HowItWorks from '@/components/home/HowItWorks';
-import CTA from '@/components/home/CTA';
+import HeroSection from '@/components/home/HeroSection';
+import CrossPlatformSection from '@/components/home/CrossPlatformSection';
+import DoctorAISection from '@/components/home/DoctorAISection';
+import RealtimeSection from '@/components/home/RealtimeSection';
+import OnPremiseSection from '@/components/home/OnPremiseSection';
+import PricingTeaserSection from '@/components/home/PricingTeaserSection';
+import TrustSection from '@/components/home/TrustSection';
+import ClosingCTASection from '@/components/home/ClosingCTASection';
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <AppPreview />
-      <Features />
-      <HowItWorks />
-      <CTA />
+      <HeroSection />
+      <CrossPlatformSection />
+      <DoctorAISection />
+      <RealtimeSection />
+      <OnPremiseSection />
+      <PricingTeaserSection />
+      <TrustSection />
+      <ClosingCTASection />
     </>
   );
 }

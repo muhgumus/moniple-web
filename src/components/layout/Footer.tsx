@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-dark text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2">
@@ -19,65 +19,126 @@ export default function Footer() {
               <span className="text-xl font-bold">Moniple</span>
             </Link>
             <p className="mt-4 text-gray-400 text-sm max-w-xs">
-              Monitor your Kubernetes clusters from anywhere. Real-time metrics, multi-cluster management, all in one place.
+              Kubernetes monitoring with AI-powered diagnostics. Real-time
+              metrics, multi-cluster management, on-premise ready.
             </p>
           </div>
 
-          {/* Navigation */}
+          {/* Product */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">Product</h3>
+            <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">
+              Product
+            </h3>
             <ul className="mt-4 space-y-3">
               <li>
-                <Link href="/features" className="text-gray-400 hover:text-white transition-colors">
+                <Link
+                  href="/features"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                >
                   Features
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="text-gray-400 hover:text-white transition-colors">
+                <Link
+                  href="/pricing"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                >
                   Pricing
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
+                <Link
+                  href="/contact"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                >
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="/privacy-policy" className="text-gray-400 hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms-of-service" className="text-gray-400 hover:text-white transition-colors">
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link href="/refund-policy" className="text-gray-400 hover:text-white transition-colors">
-                  Refund Policy
-                </Link>
+                <a
+                  href="https://app.moniple.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                >
+                  Launch App
+                </a>
               </li>
             </ul>
           </div>
 
-          {/* Get Started */}
+          {/* Apps */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">Get Started</h3>
+            <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">
+              Apps
+            </h3>
             <ul className="mt-4 space-y-3">
               <li>
                 <a
                   href="https://app.moniple.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-colors text-sm inline-flex items-center gap-2"
                 >
-                  Launch App
+                  Web App
+                  <span className="text-xs text-emerald-400">Available</span>
                 </a>
+              </li>
+              <li>
+                <span className="text-gray-400 text-sm inline-flex items-center gap-2">
+                  iOS
+                  <span className="text-xs text-amber-400">Coming soon</span>
+                </span>
+              </li>
+              <li>
+                <span className="text-gray-400 text-sm inline-flex items-center gap-2">
+                  Android
+                  <span className="text-xs text-amber-400">Coming soon</span>
+                </span>
+              </li>
+              <li>
+                <span className="text-gray-400 text-sm inline-flex items-center gap-2">
+                  Desktop
+                  <span className="text-xs text-amber-400">Coming soon</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">
+              Legal
+            </h3>
+            <ul className="mt-4 space-y-3">
+              <li>
+                <Link
+                  href="/privacy-policy"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/terms-of-service"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                >
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/refund-policy"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                >
+                  Refund Policy
+                </Link>
               </li>
               <li>
                 <a
                   href="mailto:info@moniple.com"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
                 >
                   info@moniple.com
                 </a>

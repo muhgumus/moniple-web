@@ -7,14 +7,24 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Moniple - Kubernetes Monitoring Platform',
-  description: 'Monitor your Kubernetes clusters from anywhere. Real-time metrics, multi-cluster management, mobile-first design.',
-  keywords: 'Kubernetes, monitoring, dashboard, mobile, DevOps, SRE, cloud-native',
+  title: 'Moniple — Kubernetes Monitoring with AI-Powered Diagnostics',
+  description:
+    'Real-time Kubernetes monitoring with AI-powered diagnostics, on-premise deployment, and cross-platform apps. Bring your own LLM key. Free forever for small teams.',
+  keywords:
+    'Kubernetes monitoring, AI diagnostics, on-premise, self-hosted, multi-cluster, SRE, DevOps, OpenAI, Anthropic, Claude, Gemini, Zhipu, real-time',
   openGraph: {
-    title: 'Moniple - Kubernetes Monitoring Platform',
-    description: 'Monitor your Kubernetes clusters from anywhere.',
+    title: 'Moniple — Kubernetes Monitoring with AI-Powered Diagnostics',
+    description:
+      'Real-time metrics, AI diagnostics with approval workflow, and on-premise deployment — across web, mobile and desktop.',
     type: 'website',
     url: 'https://moniple.com',
+    siteName: 'Moniple',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Moniple — Kubernetes Monitoring with AI-Powered Diagnostics',
+    description:
+      'Real-time metrics, AI diagnostics with approval workflow, and on-premise deployment.',
   },
 };
 
