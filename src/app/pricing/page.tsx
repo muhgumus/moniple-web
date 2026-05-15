@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { PricingCTA } from "@/components/pricing/PricingCTA";
 
 const freeFeatures = [
   "Up to 5 clusters",
@@ -159,14 +160,12 @@ export default function PricingPage() {
             </ul>
 
             <div className="mt-8">
-              <a
-                href="https://app.moniple.com"
-                target="_blank"
-                rel="noopener noreferrer"
+              <PricingCTA
+                plan={proYearly ? "yearly" : "monthly"}
                 className="block w-full text-center rounded-lg px-6 py-3 text-base font-semibold bg-primary text-white hover:bg-blue-600 transition-colors"
               >
                 Upgrade to Pro
-              </a>
+              </PricingCTA>
             </div>
           </div>
         </div>
@@ -207,9 +206,9 @@ export default function PricingPage() {
                 What is the refund policy?
               </h3>
               <p className="mt-2 text-gray-400">
-                Annual plans are eligible for a full refund within 14 days of
-                purchase. Monthly subscriptions are non-refundable for the
-                current period. See our full{" "}
+                All Moniple Pro subscriptions — monthly and annual — are
+                eligible for a full refund within 14 days of purchase or
+                renewal. No questions asked. See our full{" "}
                 <Link
                   href="/refund-policy"
                   className="text-primary hover:text-primary/80 transition-colors underline"
