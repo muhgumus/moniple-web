@@ -1,10 +1,14 @@
 import { initializePaddle, type Paddle } from '@paddle/paddle-js';
 
-const PADDLE_ENV = (process.env.NEXT_PUBLIC_PADDLE_ENV || 'production').toLowerCase();
+// Default to sandbox until explicitly flipped to production. Override at build
+// time with `NEXT_PUBLIC_PADDLE_ENV=production`. Client-side tokens are
+// publishable by design (Paddle.js loads them in the browser), so it's safe to
+// hardcode both here just like the live token has always been.
+const PADDLE_ENV = (process.env.NEXT_PUBLIC_PADDLE_ENV || 'sandbox').toLowerCase();
 const isSandbox = PADDLE_ENV === 'sandbox';
 
 const PROD_TOKEN = 'live_a0b08fd7c556d6ae988b4c22cd2';
-const SANDBOX_TOKEN = process.env.NEXT_PUBLIC_PADDLE_SANDBOX_TOKEN || '';
+const SANDBOX_TOKEN = 'test_73426e6828168e13ec41fbea50e';
 
 const PROD_PRICES = {
   proMonthly: 'pri_01krmf65p4mh6dcmb8js9gz6gv',   // $9.90 / seat / month
