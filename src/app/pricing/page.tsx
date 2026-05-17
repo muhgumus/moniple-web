@@ -71,7 +71,33 @@ function CheckIcon({ className }: { className?: string }) {
 
 export default function PricingPage() {
   
-  useEffect(() => { getPaddle().catch(console.error); }, []);
+  useEffect(() => {
+    // Initialize Paddle.js, then check the URL for an inbound transaction
+    // ID. Mobile and web app upgrade flows redirect users here with the
+    // checkout URL Paddle returned from /transactions — which uses the
+    // `?_ptxn=<id>` query param convention. We open the Paddle overlay
+    // manually because Paddle.js does not auto-open from a query param
+    // unless the SPA explicitly forwards it to Checkout.open().
+    (async () => {
+      try {
+        const paddle = await getPaddle();
+        const params = new URLSearchParams(window.location.search);
+        const transactionId = params.get('_ptxn');
+        if (transactionId) {
+          paddle.Checkout.open({
+            transactionId,
+            settings: {
+              displayMode: 'overlay',
+              theme: 'dark',
+              successUrl: 'https://moniple.com/checkout/success',
+            },
+          });
+        }
+      } catch (e) {
+        console.error('Paddle init/auto-checkout failed:', e);
+      }
+    })();
+  }, []);
 const [yearly, setYearly] = useState(false);
 
   return (

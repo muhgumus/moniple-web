@@ -52,10 +52,22 @@ export async function getPaddle(): Promise<Paddle> {
           '';
         const pricesEntries = Object.entries(PADDLE_PRICES) as Array<[PaddlePlan, string]>;
         const matchedPlan = pricesEntries.find(([, id]) => id === priceId)?.[0] || '';
-        const url = matchedPlan
-          ? `https://app.moniple.com/dashboard?welcome=${matchedPlan}`
-          : 'https://app.moniple.com/dashboard?welcome=1';
-        console.info('Paddle checkout completed →', url);
+        const planParam = matchedPlan || '1';
+
+        // If the upgrade flow was initiated from the iOS/Android Flutter
+        // app, the server signed the checkout URL with `?source=native`.
+        // After Paddle's hosted checkout completes inside the user's
+        // mobile browser, redirect them back into the native app via the
+        // `moniple://welcome?plan=...` custom-scheme deep link. Otherwise
+        // (web upgrade), stay in the SPA at app.moniple.com.
+        const params = new URLSearchParams(window.location.search);
+        const isNative = params.get('source') === 'native';
+
+        const url = isNative
+          ? `moniple://welcome?plan=${planParam}`
+          : `https://app.moniple.com/dashboard?welcome=${planParam}`;
+
+        console.info('Paddle checkout completed →', url, '(source:', isNative ? 'native' : 'web', ')');
         window.location.href = url;
       }
     },
