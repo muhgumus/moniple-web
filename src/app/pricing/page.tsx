@@ -1,9 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react"
-import { useEffect } from 'react'
-import { getPaddle } from '@/lib/paddle';
+import { useState } from "react";
 import { PricingCTA } from "@/components/pricing/PricingCTA";
 
 const freeFeatures = [
@@ -70,35 +68,7 @@ function CheckIcon({ className }: { className?: string }) {
 
 
 export default function PricingPage() {
-  
-  useEffect(() => {
-    // Initialize Paddle.js, then check the URL for an inbound transaction
-    // ID. Mobile and web app upgrade flows redirect users here with the
-    // checkout URL Paddle returned from /transactions — which uses the
-    // `?_ptxn=<id>` query param convention. We open the Paddle overlay
-    // manually because Paddle.js does not auto-open from a query param
-    // unless the SPA explicitly forwards it to Checkout.open().
-    (async () => {
-      try {
-        const paddle = await getPaddle();
-        const params = new URLSearchParams(window.location.search);
-        const transactionId = params.get('_ptxn');
-        if (transactionId) {
-          paddle.Checkout.open({
-            transactionId,
-            settings: {
-              displayMode: 'overlay',
-              theme: 'dark',
-              successUrl: 'https://moniple.com/checkout/success',
-            },
-          });
-        }
-      } catch (e) {
-        console.error('Paddle init/auto-checkout failed:', e);
-      }
-    })();
-  }, []);
-const [yearly, setYearly] = useState(false);
+  const [yearly, setYearly] = useState(false);
 
   return (
     <div className="py-20">
@@ -315,9 +285,8 @@ const [yearly, setYearly] = useState(false);
 
         {/* Payment note */}
         <p className="mt-10 text-center text-sm text-gray-500 max-w-2xl mx-auto">
-          Payments processed by{" "}
-          <span className="text-gray-400">Paddle</span> (Merchant of Record).
-          VAT/tax handled automatically.{" "}
+          Paid plans are launching soon — sign up free today and we&apos;ll
+          notify you the moment Pro &amp; Team go live.{" "}
           <Link
             href="/refund-policy"
             className="text-primary hover:text-primary/80 transition-colors underline"
@@ -455,9 +424,11 @@ const [yearly, setYearly] = useState(false);
                 What payment methods are accepted?
               </h3>
               <p className="mt-2 text-gray-400">
-                Paddle supports all major credit and debit cards (Visa,
-                Mastercard, American Express) as well as PayPal in supported
-                regions.
+                Once paid plans launch, we&apos;ll accept all major credit and
+                debit cards (Visa, Mastercard, American Express) in both
+                Turkish Lira (TRY) and US Dollar (USD), including installment
+                support for Turkish bank cards (Maximum, Bonus, World, Axess,
+                CardFinans, Paraf).
               </p>
             </div>
           </div>

@@ -12,12 +12,6 @@ RUN npm ci
 # Copy source files
 COPY . .
 
-# Build-time Paddle environment switch. Default = sandbox until the user
-# explicitly flips it back to production (override with --build-arg
-# NEXT_PUBLIC_PADDLE_ENV=production). Tokens for both envs are hardcoded in
-# src/lib/paddle.ts (Paddle client-side tokens are publishable).
-ARG NEXT_PUBLIC_PADDLE_ENV=sandbox
-ENV NEXT_PUBLIC_PADDLE_ENV=$NEXT_PUBLIC_PADDLE_ENV
 
 # Build the static site
 RUN npm run build

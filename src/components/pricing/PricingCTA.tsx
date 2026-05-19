@@ -1,7 +1,5 @@
 'use client';
 
-import { openCheckout } from '@/lib/paddle';
-
 export type PricingTier = 'free' | 'pro' | 'team' | 'enterprise';
 export type BillingCycle = 'monthly' | 'yearly';
 
@@ -12,6 +10,14 @@ interface PricingCTAProps {
   children?: React.ReactNode;
 }
 
+/**
+ * Plan CTAs.
+ *
+ * Pro and Team currently route users to the app's free-tier signup with a
+ * `notify=<plan>` hint so we can email them when paid plans go live —
+ * payment integration is in progress. Once the new payment provider is wired
+ * up, switch the Pro/Team branch back to a checkout call.
+ */
 export function PricingCTA({
   tier,
   billingCycle = 'monthly',
@@ -45,15 +51,20 @@ export function PricingCTA({
   const plan =
     tier === 'pro'
       ? billingCycle === 'yearly'
-        ? 'proYearly'
-        : 'proMonthly'
+        ? 'pro_yearly'
+        : 'pro_monthly'
       : billingCycle === 'yearly'
-        ? 'teamYearly'
-        : 'teamMonthly';
+        ? 'team_yearly'
+        : 'team_monthly';
 
   return (
-    <button onClick={() => openCheckout(plan)} className={className}>
+    <a
+      href={`https://app.moniple.com/register?notify=${plan}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+    >
       {children ?? (tier === 'pro' ? 'Get Pro' : 'Get Team')}
-    </button>
+    </a>
   );
 }

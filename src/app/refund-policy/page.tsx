@@ -35,9 +35,9 @@ export default function RefundPolicyPage() {
               >
                 {supportEmail}
               </a>{' '}
-              from the email address associated with your account. Refunds are processed by
-              Paddle, our Merchant of Record, and typically appear on your statement within
-              5–10 business days.
+              from the email address associated with your account. Refunds are issued back
+              to the original payment method via our payment provider and typically appear
+              on your statement within 5–10 business days, depending on your card issuer.
             </p>
           </section>
 
@@ -91,8 +91,10 @@ export default function RefundPolicyPage() {
                 </a>
               </p>
               <p className="text-gray-400 mt-2">
-                Refunds processed by:{' '}
-                <strong className="text-gray-300">Paddle.com Market Ltd</strong> (Merchant of Record)
+                Operated by:{' '}
+                <strong className="text-gray-300">
+                  Nairotech Yazılım Sistemleri ve Pazarlama Limited Şirketi
+                </strong>
               </p>
             </div>
           </section>

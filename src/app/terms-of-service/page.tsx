@@ -66,10 +66,9 @@ export default function TermsOfServicePage() {
                 .
               </li>
               <li>
-                Pro subscriptions are billed monthly or annually in advance via our payment provider,{' '}
-                <strong className="text-gray-300">Paddle.com Market Ltd</strong>, who acts as our{' '}
-                <strong className="text-gray-300">Merchant of Record (MoR)</strong> and handles
-                invoicing, payment processing, sales tax, VAT, and chargeback management on our behalf.
+                Pro and Team subscriptions are billed monthly or annually in advance through our
+                payment provider. Invoices, applicable taxes (KDV / VAT), and refunds are handled
+                by Nairotech.
               </li>
               <li>
                 All fees are non-refundable for consumed billing periods, except as described in our
@@ -166,7 +165,7 @@ export default function TermsOfServicePage() {
             <h2 className="text-2xl font-bold text-white mb-4">9. Third-Party Services</h2>
             <p className="text-gray-400">
               The Service integrates with third-party platforms (Kubernetes, Prometheus, Supabase,
-              Paddle for payments, etc.). Your use of those services is governed by their respective
+              our payment provider, etc.). Your use of those services is governed by their respective
               terms. We are not responsible for the availability, accuracy, or performance of
               third-party services.
             </p>
