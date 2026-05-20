@@ -21,6 +21,7 @@ const proFeatures = [
   "Unlimited per-seat team members",
   "30-day metric history",
   "Moniple AI Doctor — 100 scans/day",
+  "Custom LLM (your API key) — unlimited scans/day",
   "AI Doctor cron schedule min 1h",
   "Approve AI diagnostic actions",
   "Realtime push notifications (alerts, AI Doctor, invitations)",
@@ -30,6 +31,8 @@ const proFeatures = [
 const teamFeatures = [
   "Everything in Pro",
   "$8 per seat — 20% off Pro, 5-seat minimum",
+  "Moniple AI Doctor — 100 scans/day",
+  "Custom LLM (your API key) — unlimited scans/day",
   "SSO-ready (SAML / OIDC)",
   "Priority email support",
   "Dedicated customer success",
@@ -402,8 +405,15 @@ export default function PricingPage() {
                 How many AI Doctor scans can I run?
               </h3>
               <p className="mt-2 text-gray-400">
-                Free: 5 scans/day. Pro &amp; Team: 100 scans/day. Enterprise:
-                unlimited.
+                There are two separate daily budgets.{" "}
+                <span className="text-gray-200">Moniple AI</span> (our hosted
+                LLM, throttled to control cost): 5 scans/day on Free, 100/day
+                on Pro &amp; Team, unlimited on Enterprise.{" "}
+                <span className="text-gray-200">Custom LLM</span> (bring your
+                own OpenAI, Anthropic, Google, Zhipu, or any
+                OpenAI-compatible key): 5 scans/day on Free, unlimited on Pro,
+                Team &amp; Enterprise — since you&apos;re paying your own
+                provider directly, there&apos;s no upper limit on paid plans.
               </p>
             </div>
             <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
