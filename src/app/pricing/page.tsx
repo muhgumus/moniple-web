@@ -23,7 +23,7 @@ const proFeatures = [
   "Moniple AI Doctor — 100 scans/day",
   "AI Doctor cron schedule min 1h",
   "Approve AI diagnostic actions",
-  "Realtime notifications (coming soon)",
+  "Realtime push notifications (alerts, AI Doctor, invitations)",
   "Email support",
 ];
 
