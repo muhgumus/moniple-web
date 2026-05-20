@@ -10,7 +10,7 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "$9.90",
+    price: "$10",
     period: "/seat/month",
     tagline: "Most popular",
     featured: true,
@@ -18,10 +18,10 @@ const plans = [
   },
   {
     name: "Team",
-    price: "$34.90",
-    period: "/5-seat block/month",
-    tagline: "~$6.98 per seat",
-    summary: "Everything in Pro, SSO-ready, priority support",
+    price: "$40",
+    period: "/month for 5 seats",
+    tagline: "$8 per seat after 5",
+    summary: "Everything in Pro, SSO-ready, priority support, dedicated success",
   },
   {
     name: "Enterprise",

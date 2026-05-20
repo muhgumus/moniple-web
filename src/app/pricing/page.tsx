@@ -29,10 +29,10 @@ const proFeatures = [
 
 const teamFeatures = [
   "Everything in Pro",
-  "Block pricing (5 seats per block)",
-  "Effective $6.98/seat — 30% off vs Pro",
+  "$8 per seat — 20% off Pro, 5-seat minimum",
   "SSO-ready (SAML / OIDC)",
   "Priority email support",
+  "Dedicated customer success",
   "Shared cluster ownership transfer",
 ];
 
@@ -160,18 +160,18 @@ export default function PricingPage() {
             <div className="mt-6">
               {yearly ? (
                 <div>
-                  <span className="text-4xl font-bold text-white">$99</span>
+                  <span className="text-4xl font-bold text-white">$100</span>
                   <span className="text-gray-300 text-sm"> per seat/year</span>
                 </div>
               ) : (
                 <div>
-                  <span className="text-4xl font-bold text-white">$9.90</span>
+                  <span className="text-4xl font-bold text-white">$10</span>
                   <span className="text-gray-300 text-sm"> per seat/month</span>
                 </div>
               )}
             </div>
             <p className="mt-2 text-xs text-green-400 min-h-[1.5rem]">
-              {yearly ? "$8.25/mo — 2 months free" : "Billed monthly per seat"}
+              {yearly ? "$8.33/mo — 2 months free" : "Billed monthly per seat"}
             </p>
 
             <ul className="mt-6 space-y-3 flex-1">
@@ -198,30 +198,24 @@ export default function PricingPage() {
           <div className="rounded-2xl p-6 bg-white/5 border border-gray-700 flex flex-col">
             <h2 className="text-xl font-bold text-white">Team</h2>
             <p className="mt-2 text-sm text-gray-300">
-              Block pricing for larger teams.
+              5-seat minimum. Then per-seat scaling. Built for small teams ready to share clusters.
             </p>
 
             <div className="mt-6">
               {yearly ? (
                 <div>
-                  <span className="text-4xl font-bold text-white">$348</span>
-                  <span className="text-gray-300 text-sm">
-                    {" "}
-                    per 5-seat block/year
-                  </span>
+                  <span className="text-4xl font-bold text-white">$400</span>
+                  <span className="text-gray-300 text-sm"> /yr for 5 seats</span>
                 </div>
               ) : (
                 <div>
-                  <span className="text-4xl font-bold text-white">$34.90</span>
-                  <span className="text-gray-300 text-sm">
-                    {" "}
-                    per 5-seat block/month
-                  </span>
+                  <span className="text-4xl font-bold text-white">$40</span>
+                  <span className="text-gray-300 text-sm"> /mo for 5 seats</span>
                 </div>
               )}
             </div>
             <p className="mt-2 text-xs text-gray-400 min-h-[1.5rem]">
-              Each block includes 5 seats. Effective $6.98/seat — 30% off Pro.
+              {yearly ? "Then $80/seat/year for additional seats" : "Then $8/seat/month for additional seats"}
             </p>
 
             <ul className="mt-6 space-y-3 flex-1">
@@ -307,12 +301,14 @@ export default function PricingPage() {
                 How does per-seat pricing work?
               </h3>
               <p className="mt-2 text-gray-400">
-                <span className="text-gray-200">Pro</span> charges $9.90 per
-                team member per month (or $99/year per seat). Add or remove
+                <span className="text-gray-200">Pro</span> charges $10 per
+                team member per month (or $100/year per seat). Add or remove
                 seats anytime — your bill adjusts at the next cycle.{" "}
-                <span className="text-gray-200">Team</span> bundles seats in
-                5-seat blocks at $34.90/month (or $348/year), giving you an
-                effective $6.98/seat — about 30% off Pro pricing.
+                <span className="text-gray-200">Team</span> is per-seat pricing
+                with a 5-seat minimum: starts at $40/month (or $400/year) for
+                5 seats, then $8 per additional seat per month ($80 per
+                additional seat per year). At 5 seats you save 20% vs
+                Pro&apos;s $10/seat rate.
               </p>
             </div>
             <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
@@ -320,12 +316,12 @@ export default function PricingPage() {
                 What happens if I add more team members?
               </h3>
               <p className="mt-2 text-gray-400">
-                On <span className="text-gray-200">Pro</span>, your seat count
-                grows 1-to-1 with team size. On{" "}
-                <span className="text-gray-200">Team</span>, blocks scale in
-                groups of 5: 1–5 members = 1 block, 6–10 members = 2 blocks,
-                and so on. The app prompts you to add more blocks before you
-                hit the cap.
+                <span className="text-gray-200">Pro</span> scales 1-to-1 per
+                seat at $10/seat/month.{" "}
+                <span className="text-gray-200">Team</span> scales 1-to-1 per
+                seat at $8/seat/month with a 5-seat minimum — adding a 6th
+                seat brings your total to $48/month. The app prompts you
+                before you exceed your current seat count.
               </p>
             </div>
             <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
