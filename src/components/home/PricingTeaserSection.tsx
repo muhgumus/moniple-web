@@ -6,7 +6,7 @@ const plans = [
     price: "$0",
     period: "forever",
     highlight: "Get started",
-    features: ["5 clusters", "5 AI scans/day", "6h schedule min"],
+    features: ["1 cluster", "1 invited member", "5 AI scans/day", "6h schedule min"],
   },
   {
     name: "Pro",

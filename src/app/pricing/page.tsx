@@ -5,20 +5,20 @@ import { useState } from "react";
 import { PricingCTA } from "@/components/pricing/PricingCTA";
 
 const freeFeatures = [
-  "Up to 5 clusters",
-  "Up to 5 team members",
+  "1 cluster",
+  "1 invited member (try-sharing)",
   "Realtime metrics & alerts",
   "1-hour & 6-hour history",
   "Moniple AI Doctor — 5 scans/day",
   "AI Doctor cron schedule min 6h",
-  "Custom LLM (your API key) — unlimited",
+  "Custom LLM (your API key) — 5 scans/day",
   "Community support",
 ];
 
 const proFeatures = [
   "Everything in Free",
   "Unlimited clusters",
-  "Unlimited per-seat team members",
+  "Per-seat pricing — 1 seat per active user (you + each invited member)",
   "30-day metric history",
   "100 Moniple AI scans / day",
   "Unlimited Custom LLM scans / day (bring your own API key)",
@@ -31,6 +31,7 @@ const proFeatures = [
 const teamFeatures = [
   "Everything in Pro",
   "$8 per seat — 20% off Pro, 5-seat minimum",
+  "Per-seat pricing — 1 seat per active user (you + each invited member)",
   "100 Moniple AI scans / day",
   "Unlimited Custom LLM scans / day (bring your own API key)",
   "SSO-ready (SAML / OIDC)",
@@ -41,6 +42,7 @@ const teamFeatures = [
 
 const enterpriseFeatures = [
   "Everything in Team",
+  "Unlimited seats / members",
   "Custom limits — clusters, scans, schedule interval (fully parametric)",
   "Unlimited AI Doctor scans (by default)",
   "On-premise deployment",
@@ -301,11 +303,24 @@ export default function PricingPage() {
           <div className="space-y-6">
             <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-white">
+                What counts as a seat?
+              </h3>
+              <p className="mt-2 text-gray-400">
+                A seat is one active user with access to your clusters — that
+                includes you (the cluster owner) plus every member you&apos;ve
+                invited or shared a cluster with via a team. A 1-seat Pro
+                subscription covers just you; to share clusters with a
+                teammate, increase your seat count. Free tier allows 1 invited
+                member as a try-sharing allowance.
+              </p>
+            </div>
+            <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white">
                 How does per-seat pricing work?
               </h3>
               <p className="mt-2 text-gray-400">
                 <span className="text-gray-200">Pro</span> charges $10 per
-                team member per month (or $100/year per seat). Add or remove
+                active user per month (or $100/year per seat). Add or remove
                 seats anytime — your bill adjusts at the next cycle.{" "}
                 <span className="text-gray-200">Team</span> is per-seat pricing
                 with a 5-seat minimum: starts at $40/month (or $400/year) for
@@ -316,15 +331,18 @@ export default function PricingPage() {
             </div>
             <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-white">
-                What happens if I add more team members?
+                What happens if I add more team members than my seats?
               </h3>
               <p className="mt-2 text-gray-400">
+                You&apos;ll get a prompt to upgrade your seat count when
+                inviting someone past your current limit. Existing customers
+                who already exceed their seats get a 14-day grace period to
+                upgrade or remove members.{" "}
                 <span className="text-gray-200">Pro</span> scales 1-to-1 per
                 seat at $10/seat/month.{" "}
                 <span className="text-gray-200">Team</span> scales 1-to-1 per
                 seat at $8/seat/month with a 5-seat minimum — adding a 6th
-                seat brings your total to $48/month. The app prompts you
-                before you exceed your current seat count.
+                seat brings your total to $48/month.
               </p>
             </div>
             <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
