@@ -201,7 +201,7 @@ export default function PricingPage() {
           <div className="rounded-2xl p-6 bg-white/5 border border-gray-700 flex flex-col">
             <h2 className="text-xl font-bold text-white">Team</h2>
             <p className="mt-2 text-sm text-gray-300">
-              5-seat minimum. Then per-seat scaling. Built for small teams ready to share clusters.
+              For small teams sharing clusters (5+ seats).
             </p>
 
             <div className="mt-6">
