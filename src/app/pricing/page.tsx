@@ -201,7 +201,7 @@ export default function PricingPage() {
           <div className="rounded-2xl p-6 bg-white/5 border border-gray-700 flex flex-col">
             <h2 className="text-xl font-bold text-white">Team</h2>
             <p className="mt-2 text-sm text-gray-300">
-              For small teams sharing clusters (5+ seats).
+              For small teams.
             </p>
 
             <div className="mt-6">
@@ -250,7 +250,7 @@ export default function PricingPage() {
               </span>
             </div>
             <p className="mt-2 text-sm text-gray-300">
-              On-premise deployment, dedicated support, custom SLA.
+              Dedicated support, custom SLA.
             </p>
 
             <div className="mt-6">
