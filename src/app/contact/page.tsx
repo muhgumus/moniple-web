@@ -14,7 +14,7 @@ export default function ContactPage() {
     e.preventDefault();
 
     // Create mailto link with form data
-    const subject = encodeURIComponent(`Moniple On-Premise Inquiry from ${formData.name}`);
+    const subject = encodeURIComponent(`Moniple Contact — ${formData.name}`);
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company}\n\nMessage:\n${formData.message}`
     );
@@ -40,7 +40,8 @@ export default function ContactPage() {
               <span className="text-primary">Touch</span>
             </h1>
             <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-              Interested in on-premise deployment or have questions? We'd love to hear from you.
+              Have a question, feedback, or partnership idea? Fill out the form
+              below and we&apos;ll get back to you shortly.
             </p>
           </div>
 
@@ -107,7 +108,7 @@ export default function ContactPage() {
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-dark dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"
-                  placeholder="Tell us about your Kubernetes monitoring needs..."
+                  placeholder="Tell us how we can help — questions, feedback, partnership, or anything else..."
                 />
               </div>
 
