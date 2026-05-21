@@ -5,7 +5,7 @@ import { useState } from "react";
 import { PricingCTA } from "@/components/pricing/PricingCTA";
 
 const freeFeatures = [
-  "1 cluster",
+  "Up to 5 clusters",
   "1 invited member (try-sharing)",
   "Realtime metrics & alerts",
   "1-hour & 6-hour history",
