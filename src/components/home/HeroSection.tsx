@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SignupLink from "@/components/SignupLink";
 
 export default function HeroSection() {
   return (
@@ -32,10 +33,9 @@ export default function HeroSection() {
 
             {/* CTAs */}
             <div className="mt-10 flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4">
-              <a
+              <SignupLink
                 href="https://app.moniple.com/register"
-                target="_blank"
-                rel="noopener noreferrer"
+                source="home_hero_section"
                 className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-primary px-8 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-600 transition-colors"
               >
                 Get Started Free
@@ -52,7 +52,7 @@ export default function HeroSection() {
                     d="M13 7l5 5m0 0l-5 5m5-5H6"
                   />
                 </svg>
-              </a>
+              </SignupLink>
               <Link
                 href="/pricing"
                 className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 px-8 py-3 text-base font-semibold text-dark dark:text-white shadow-sm ring-1 ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SignupLink from "@/components/SignupLink";
 
 export default function ClosingCTASection() {
   return (
@@ -18,10 +19,9 @@ export default function ClosingCTASection() {
             you want.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
+            <SignupLink
               href="https://app.moniple.com/register"
-              target="_blank"
-              rel="noopener noreferrer"
+              source="closing_cta"
               className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 text-base font-semibold text-primary shadow-sm hover:bg-gray-100 transition-colors"
             >
               Get Started Free
@@ -38,7 +38,7 @@ export default function ClosingCTASection() {
                   d="M13 7l5 5m0 0l-5 5m5-5H6"
                 />
               </svg>
-            </a>
+            </SignupLink>
             <Link
               href="/contact"
               className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-primary/20 px-8 py-3 text-base font-semibold text-white ring-1 ring-white/30 hover:bg-primary/30 transition-colors backdrop-blur-sm"

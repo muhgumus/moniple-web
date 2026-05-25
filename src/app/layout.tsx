@@ -1,5 +1,7 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import AnalyticsListener from '@/components/AnalyticsListener';
+import CookieConsent from '@/components/CookieConsent';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -41,6 +43,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <AnalyticsListener />
+        <CookieConsent />
       </body>
     </html>
   );
