@@ -64,6 +64,17 @@ export default function Footer() {
                   Launch App
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://github.com/nairotech/moniple-agent"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors text-sm inline-flex items-center gap-2"
+                >
+                  Open Source Agent
+                  <span className="text-xs text-emerald-400">GitHub</span>
+                </a>
+              </li>
             </ul>
           </div>
 
