@@ -4,20 +4,29 @@ import { useCallback, useEffect, useState } from 'react';
 
 type State = 'checking' | 'operational' | 'down';
 
-const COMPONENTS: { name: string; desc: string; url: string }[] = [
-  { name: 'Marketing site', desc: 'moniple.com', url: 'https://moniple.com/' },
-  { name: 'Web app', desc: 'app.moniple.com', url: 'https://app.moniple.com/' },
-  { name: 'API', desc: 'server.moniple.com', url: 'https://server.moniple.com/health' },
-  { name: 'Realtime & Auth', desc: 'supabase.moniple.com', url: 'https://supabase.moniple.com/' },
+type Check = 'health' | 'reach';
+
+const COMPONENTS: { name: string; desc: string; url: string; check: Check }[] = [
+  // 'health' = real CORS fetch (endpoint allows our origin) → checks HTTP 200.
+  // 'reach'  = no-cors reachability (opaque) → any response counts as up.
+  { name: 'Marketing site', desc: 'moniple.com', url: 'https://moniple.com/', check: 'health' },
+  { name: 'Web app', desc: 'app.moniple.com', url: 'https://app.moniple.com/', check: 'reach' },
+  { name: 'API', desc: 'server.moniple.com', url: 'https://server.moniple.com/health', check: 'health' },
+  { name: 'Realtime & Auth', desc: 'supabase.moniple.com', url: 'https://supabase.moniple.com/', check: 'reach' },
 ];
 
-// Reachability probe. `no-cors` resolves (opaque) for any HTTP response and
-// rejects only on a network/DNS/TLS failure or timeout — so it tells us the
-// endpoint is reachable without needing CORS headers.
-async function probe(url: string): Promise<State> {
+async function probe(url: string, check: Check): Promise<State> {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 8000);
   try {
+    if (check === 'health') {
+      // Real (CORS) request — the endpoint sends Access-Control-Allow-Origin for
+      // moniple.com (or is same-origin), so we can read the real HTTP status.
+      const res = await fetch(url, { cache: 'no-store', signal: ctrl.signal });
+      return res.ok ? 'operational' : 'down';
+    }
+    // Reachability only — opaque response resolves for any HTTP reply; rejects
+    // only on network/DNS/TLS failure or timeout.
     await fetch(url, { mode: 'no-cors', cache: 'no-store', signal: ctrl.signal });
     return 'operational';
   } catch {
@@ -37,7 +46,7 @@ export default function StatusPage() {
   const runChecks = useCallback(async () => {
     setRunning(true);
     const entries = await Promise.all(
-      COMPONENTS.map(async (c) => [c.name, await probe(c.url)] as const),
+      COMPONENTS.map(async (c) => [c.name, await probe(c.url, c.check)] as const),
     );
     setStatuses(Object.fromEntries(entries));
     setLastChecked(new Date().toLocaleTimeString());
