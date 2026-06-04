@@ -75,6 +75,14 @@ export default function Footer() {
                   <span className="text-xs text-emerald-400">GitHub</span>
                 </a>
               </li>
+              <li>
+                <Link
+                  href="/status"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                >
+                  Status
+                </Link>
+              </li>
             </ul>
           </div>
 
