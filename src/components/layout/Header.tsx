@@ -3,6 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import GitHubIcon from '@/components/GitHubIcon';
+
+const AGENT_REPO = 'https://github.com/nairotech/moniple-agent';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,6 +46,16 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
+            <a
+              href={AGENT_REPO}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open-source agent on GitHub"
+              title="Open-source agent on GitHub"
+              className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
+            >
+              <GitHubIcon className="w-5 h-5" />
+            </a>
             <a
               href="https://app.moniple.com"
               target="_blank"
@@ -85,6 +98,16 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
+              <a
+                href={AGENT_REPO}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <GitHubIcon className="w-5 h-5" />
+                Open-source agent
+              </a>
               <a
                 href="https://app.moniple.com"
                 target="_blank"

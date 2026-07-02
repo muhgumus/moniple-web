@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SignupLink from "@/components/SignupLink";
+import DemoLink from "@/components/DemoLink";
 
 export default function ClosingCTASection() {
   return (
@@ -46,6 +47,15 @@ export default function ClosingCTASection() {
               Contact for Enterprise
             </Link>
           </div>
+          <p className="mt-6 text-sm text-blue-100">
+            Not ready to sign up?{" "}
+            <DemoLink
+              source="closing_cta"
+              className="font-semibold text-white underline underline-offset-4 hover:text-blue-50"
+            >
+              Explore the live demo — no account needed
+            </DemoLink>
+          </p>
         </div>
       </div>
     </section>

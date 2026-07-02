@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import SignupLink from "@/components/SignupLink";
+import DemoLink from "@/components/DemoLink";
 
 export default function HeroSection() {
   return (
@@ -15,30 +15,32 @@ export default function HeroSection() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              AI Doctor · Real-time · Cross-platform
+              Your AI SRE for Kubernetes
             </div>
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-dark dark:text-white leading-tight">
-              Kubernetes monitoring with{" "}
-              <span className="text-primary">AI-powered</span> diagnostics
+              An AI Doctor that finds cluster issues and{" "}
+              <span className="text-primary">proposes the fix</span>
             </h1>
 
             {/* Subtitle */}
             <p className="mt-6 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0">
-              Real-time metrics, automated AI diagnostics with approval
-              workflow, and on-premise deployment — across web, mobile and
-              desktop. Pay only for what you use.
+              Moniple watches your Kubernetes in real time, diagnoses problems
+              like a senior SRE, and suggests remediations you approve — every
+              fix shows its exact <code className="rounded bg-primary/10 px-1.5 py-0.5 font-mono text-[0.85em] text-primary">kubectl</code>{" "}
+              equivalent before you say yes. One 60-second install, then monitor
+              from web, iOS and Android.
             </p>
 
-            {/* CTAs */}
+            {/* CTAs — Start free primary, live demo secondary (no signup) */}
             <div className="mt-10 flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4">
               <SignupLink
                 href="https://app.moniple.com/register"
                 source="home_hero_section"
                 className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-primary px-8 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-600 transition-colors"
               >
-                Get Started Free
+                Start free
                 <svg
                   className="ml-2 w-5 h-5"
                   fill="none"
@@ -53,12 +55,12 @@ export default function HeroSection() {
                   />
                 </svg>
               </SignupLink>
-              <Link
-                href="/pricing"
+              <DemoLink
+                source="home_hero_section"
                 className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 px-8 py-3 text-base font-semibold text-dark dark:text-white shadow-sm ring-1 ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
               >
-                See Pricing
-              </Link>
+                Try the live demo — no signup
+              </DemoLink>
             </div>
 
             {/* Trust strip */}
@@ -75,7 +77,7 @@ export default function HeroSection() {
                     clipRule="evenodd"
                   />
                 </svg>
-                Self-hosted Supabase
+                Open-source agent
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <svg
@@ -89,21 +91,7 @@ export default function HeroSection() {
                     clipRule="evenodd"
                   />
                 </svg>
-                GDPR ready
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <svg
-                  className="w-4 h-4 text-emerald-500"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                SOC2 (Enterprise)
+                Outbound-only — nothing connects in
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <svg

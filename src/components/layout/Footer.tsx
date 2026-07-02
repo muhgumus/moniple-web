@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import GitHubIcon from '@/components/GitHubIcon';
 
 export default function Footer() {
   return (
@@ -79,8 +80,8 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors text-sm inline-flex items-center gap-2"
                 >
+                  <GitHubIcon className="w-4 h-4" />
                   Open Source Agent
-                  <span className="text-xs text-emerald-400">GitHub</span>
                 </a>
               </li>
               <li>
