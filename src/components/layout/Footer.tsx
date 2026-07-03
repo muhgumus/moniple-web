@@ -85,6 +85,16 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a
+                  href="https://github.com/nairotech/moniple-agent/discussions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                >
+                  Community
+                </a>
+              </li>
+              <li>
                 <Link
                   href="/status"
                   className="text-gray-400 hover:text-white transition-colors text-sm"
