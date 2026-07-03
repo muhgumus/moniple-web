@@ -18,10 +18,9 @@ interface PricingCTAProps {
 /**
  * Plan CTAs.
  *
- * Pro and Team currently route users to the app's free-tier signup with a
- * `notify=<plan>` hint so we can email them when paid plans go live —
- * payment integration is in progress. Once the new payment provider is wired
- * up, switch the Pro/Team branch back to a checkout call.
+ * Pro and Team route users to the app's signup with a `notify=<plan>` hint;
+ * the upgrade itself happens in-app (Billing screen → Polar checkout, which
+ * needs an authenticated user). Pro starts a 14-day free trial at checkout.
  *
  * Every click fires a `signup_click` analytics event with the tier, billing
  * cycle and source surface as parameters.
