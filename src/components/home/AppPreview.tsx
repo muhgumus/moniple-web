@@ -37,8 +37,8 @@ export default function AppPreview() {
               <Image
                 src="/images/app/dashboard-desktop.png"
                 alt="Moniple Dashboard - Desktop View"
-                width={1914}
-                height={1606}
+                width={2880}
+                height={1626}
                 className="w-full h-auto"
                 priority
               />
@@ -71,8 +71,8 @@ export default function AppPreview() {
                 <Image
                   src="/images/app/dashboard-mobile.png"
                   alt="Moniple Dashboard - Mobile View"
-                  width={1290}
-                  height={2796}
+                  width={1320}
+                  height={2868}
                   className="w-full h-auto"
                 />
               </div>
