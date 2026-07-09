@@ -5,7 +5,7 @@
  * deploy) to show the sitewide discount banner. Keep it `false` until
  * launch so the code doesn't leak early.
  */
-export const SHOW_PH_LAUNCH_BANNER = false;
+export const SHOW_PH_LAUNCH_BANNER = true;
 
-export const PH_DISCOUNT_CODE = 'PHLAUNCH50';
-export const PH_DISCOUNT_LABEL = '50% off your first 3 months';
+export const PH_DISCOUNT_CODE = 'FREE2026';
+export const PH_DISCOUNT_LABEL = 'Launch gift: 6 months free for the first 1,000 users';

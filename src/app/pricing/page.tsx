@@ -30,7 +30,7 @@ const proFeatures = [
 
 const teamFeatures = [
   "Everything in Pro",
-  "$8 per seat — 20% off Pro, 5-seat minimum",
+  "$15 per seat — 25% off Pro, 5-seat minimum",
   "Per-seat pricing — 1 seat per active user (you + each invited member)",
   "100 Moniple AI scans / day",
   "Unlimited Custom LLM scans / day (bring your own API key)",
@@ -165,19 +165,19 @@ export default function PricingPage() {
             <div className="mt-6">
               {yearly ? (
                 <div>
-                  <span className="text-4xl font-bold text-white">$100</span>
+                  <span className="text-4xl font-bold text-white">$200</span>
                   <span className="text-gray-300 text-sm"> per seat/year</span>
                 </div>
               ) : (
                 <div>
-                  <span className="text-4xl font-bold text-white">$10</span>
+                  <span className="text-4xl font-bold text-white">$20</span>
                   <span className="text-gray-300 text-sm"> per seat/month</span>
                 </div>
               )}
             </div>
             <p className="mt-2 text-xs text-green-400 min-h-[1.5rem]">
               {yearly
-                ? "14-day free trial · $8.33/mo — 2 months free"
+                ? "14-day free trial · $16.67/mo — 2 months free"
                 : "14-day free trial · then billed monthly per seat"}
             </p>
 
@@ -211,18 +211,18 @@ export default function PricingPage() {
             <div className="mt-6">
               {yearly ? (
                 <div>
-                  <span className="text-4xl font-bold text-white">$400</span>
+                  <span className="text-4xl font-bold text-white">$750</span>
                   <span className="text-gray-300 text-sm"> /yr for 5 seats</span>
                 </div>
               ) : (
                 <div>
-                  <span className="text-4xl font-bold text-white">$40</span>
+                  <span className="text-4xl font-bold text-white">$75</span>
                   <span className="text-gray-300 text-sm"> /mo for 5 seats</span>
                 </div>
               )}
             </div>
             <p className="mt-2 text-xs text-gray-400 min-h-[1.5rem]">
-              {yearly ? "Then $80/seat/year for additional seats" : "Then $8/seat/month for additional seats"}
+              {yearly ? "Then $150/seat/year for additional seats" : "Then $15/seat/month for additional seats"}
             </p>
 
             <ul className="mt-6 space-y-3 flex-1">
@@ -335,14 +335,14 @@ export default function PricingPage() {
                 How does per-seat pricing work?
               </h3>
               <p className="mt-2 text-gray-400">
-                <span className="text-gray-200">Pro</span> charges $10 per
-                active user per month (or $100/year per seat). Add or remove
+                <span className="text-gray-200">Pro</span> charges $20 per
+                active user per month (or $200/year per seat). Add or remove
                 seats anytime — your bill adjusts at the next cycle.{" "}
                 <span className="text-gray-200">Team</span> is per-seat pricing
-                with a 5-seat minimum: starts at $40/month (or $400/year) for
-                5 seats, then $8 per additional seat per month ($80 per
+                with a 5-seat minimum: starts at $75/month (or $750/year) for
+                5 seats, then $15 per additional seat per month ($150 per
                 additional seat per year). At 5 seats you save 20% vs
-                Pro&apos;s $10/seat rate.
+                Pro&apos;s $20/seat rate.
               </p>
             </div>
             <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
@@ -355,10 +355,10 @@ export default function PricingPage() {
                 who already exceed their seats get a 14-day grace period to
                 upgrade or remove members.{" "}
                 <span className="text-gray-200">Pro</span> scales 1-to-1 per
-                seat at $10/seat/month.{" "}
+                seat at $20/seat/month.{" "}
                 <span className="text-gray-200">Team</span> scales 1-to-1 per
-                seat at $8/seat/month with a 5-seat minimum — adding a 6th
-                seat brings your total to $48/month.
+                seat at $15/seat/month with a 5-seat minimum — adding a 6th
+                seat brings your total to $90/month.
               </p>
             </div>
             <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
