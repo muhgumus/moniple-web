@@ -180,6 +180,19 @@ export default function TermsOfServicePage() {
               FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. We do not warrant that the
               Service will be uninterrupted, error-free, or completely secure.
             </p>
+            <p className="text-gray-400 text-sm leading-relaxed mt-4">
+              <strong className="text-gray-300">AI-generated features.</strong> Parts of the
+              Service (including the AI Doctor) use large language models to analyze cluster data
+              and to generate diagnostics, findings, and proposed remediation actions.
+              AI-generated output is probabilistic by nature and may be inaccurate, incomplete, or
+              unsuitable for your environment. It is provided for informational purposes only and
+              does not constitute professional advice. No proposed action is executed without your
+              explicit approval; by approving an action you confirm that you have reviewed it and
+              you accept sole responsibility for its execution and its effects on your
+              infrastructure, whether the underlying recommendation was correct or not. Where you
+              connect your own LLM provider, its output and terms are additionally governed by
+              that provider (Section 9).
+            </p>
           </section>
 
           {/* 11. Limitation of Liability */}

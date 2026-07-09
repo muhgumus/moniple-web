@@ -141,6 +141,14 @@ export default function TermsOfServicePage() {
               merchantability, fitness for a particular purpose, or non-infringement, to
               the maximum extent permitted by law.
             </p>
+            <p className="mt-4">
+              <strong className="text-gray-300">AI-generated features.</strong> Features such as
+              the AI Doctor use large language models to analyze cluster data and generate
+              diagnostics and proposed remediation actions. AI output may be inaccurate or
+              incomplete and is provided for informational purposes only. No action runs without
+              your explicit approval; by approving an action you confirm you have reviewed it and
+              accept sole responsibility for its execution and effects on your infrastructure.
+            </p>
           </section>
 
           <section>
