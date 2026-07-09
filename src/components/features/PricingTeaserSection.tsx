@@ -21,7 +21,7 @@ const plans = [
     price: "$75",
     period: "/month for 5 seats",
     tagline: "$15 per seat after 5",
-    summary: "Everything in Pro, SSO-ready, priority support, dedicated success",
+    summary: "Everything in Pro, priority support, dedicated success, SSO coming soon",
   },
   {
     name: "Enterprise",

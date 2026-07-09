@@ -76,8 +76,8 @@ const items = [
     ),
   },
   {
-    title: "SSO ready (Team+)",
-    description: "SAML and OIDC integration for Team and Enterprise.",
+    title: "SSO (Team+) — coming soon",
+    description: "SAML and OIDC integration is coming soon for Team and Enterprise.",
     icon: (
       <svg
         className="w-6 h-6"

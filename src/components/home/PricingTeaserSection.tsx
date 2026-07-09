@@ -28,7 +28,7 @@ const plans = [
     highlight: "$15 per seat after 5",
     features: [
       "Everything in Pro",
-      "SSO-ready",
+      "SSO (coming soon)",
       "Priority support",
     ],
   },

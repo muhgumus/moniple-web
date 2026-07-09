@@ -34,7 +34,7 @@ const teamFeatures = [
   "Per-seat pricing — 1 seat per active user (you + each invited member)",
   "100 Moniple AI scans / day",
   "Unlimited Custom LLM scans / day (bring your own API key)",
-  "SSO-ready (SAML / OIDC)",
+  "SSO (SAML / OIDC) — coming soon",
   "Priority email support",
   "Dedicated customer success",
   "Shared cluster ownership transfer",
@@ -46,7 +46,7 @@ const enterpriseFeatures = [
   "Custom limits — clusters, scans, schedule interval (fully parametric)",
   "Unlimited AI Doctor scans (by default)",
   "On-premise deployment",
-  "SSO + audit logs",
+  "SSO + audit logs (coming soon)",
   "Dedicated support engineer",
   "Custom SLA",
   "SOC2 compliance package",
@@ -397,7 +397,8 @@ export default function PricingPage() {
               <p className="mt-2 text-gray-400">
                 Enterprise plans are fully customizable. We tune cluster limits,
                 scan quotas, schedule frequency, retention periods, and feature
-                flags (SSO, audit logs, approval workflows) per organization.{" "}
+                flags per organization — plus early access to upcoming SSO,
+                audit logs and approval workflows.{" "}
                 <a
                   href="mailto:enterprise@moniple.com?subject=Moniple%20Enterprise%20Inquiry"
                   className="text-primary hover:text-primary/80 transition-colors underline"

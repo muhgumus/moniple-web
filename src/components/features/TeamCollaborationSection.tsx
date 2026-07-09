@@ -15,9 +15,9 @@ const bullets = [
       "Hand off a cluster to a teammate without recreating subscriptions or reconfiguring access.",
   },
   {
-    title: "SSO-ready (Team & Enterprise)",
+    title: "SSO (Team & Enterprise) — coming soon",
     description:
-      "SAML / OIDC standards for enterprise identity providers. Audit-friendly login flow.",
+      "SAML / OIDC support for enterprise identity providers is coming soon. Audit-friendly login flow.",
   },
 ];
 
