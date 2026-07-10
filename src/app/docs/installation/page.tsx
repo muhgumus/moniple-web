@@ -57,25 +57,24 @@ export default function InstallationPage() {
       <Section title="The one-line install">
         <P>
           Add a cluster in the app to get your API key, then run the command it
-          shows you. It is a plain <Code>curl | sed | kubectl apply</Code>{' '}
-          pipeline — inspect every byte before you run it.
+          shows you. It is a single <Code>kubectl apply</Code> — the server
+          renders the manifest with your key, and it works the same in bash,
+          PowerShell and cmd.
         </P>
         <Terminal title="install the agent">
-          {`curl -s https://server.moniple.com/install/agent.yaml \\
-  | sed "s|MONIPLE_SERVER_URL_PLACEHOLDER|https://server.moniple.com|g" \\
-  | sed "s|MONIPLE_API_KEY_PLACEHOLDER|<YOUR_API_KEY>|g" \\
-  | kubectl apply -f -`}
+          {`kubectl apply -f "https://server.moniple.com/install/agent.yaml?key=<YOUR_API_KEY>"`}
         </Terminal>
         <P>
-          The two <Code>sed</Code> substitutions inject your server URL and the
-          cluster&apos;s API key into the manifest&apos;s placeholders. The API
-          key authenticates every metrics push; keep it secret.
+          The <Code>key</Code> parameter injects your cluster&apos;s API key
+          and the server URL into the manifest before it is served. The API key
+          authenticates every metrics push; keep it secret.
         </P>
         <Callout tone="note" title="Want to review the manifest first?">
           Fetch it without applying:{' '}
           <Code>curl -s https://server.moniple.com/install/agent.yaml</Code>. It
           is a single YAML document — Namespace, ServiceAccount, ClusterRole,
-          ClusterRoleBinding, Deployment, and Service.
+          ClusterRoleBinding, Deployment, and Service. Without the{' '}
+          <Code>key</Code> parameter you get the raw template with placeholders.
         </Callout>
       </Section>
 

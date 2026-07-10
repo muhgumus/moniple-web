@@ -2,10 +2,7 @@ import Link from "next/link";
 import CopyTerminal from "./CopyTerminal";
 
 // Kept verbatim in sync with /docs/installation (the one-line install).
-const INSTALL_COMMAND = `curl -s https://server.moniple.com/install/agent.yaml \\
-  | sed "s|MONIPLE_SERVER_URL_PLACEHOLDER|https://server.moniple.com|g" \\
-  | sed "s|MONIPLE_API_KEY_PLACEHOLDER|<YOUR_API_KEY>|g" \\
-  | kubectl apply -f -`;
+const INSTALL_COMMAND = `kubectl apply -f "https://server.moniple.com/install/agent.yaml?key=<YOUR_API_KEY>"`;
 
 const steps = [
   {

@@ -97,16 +97,14 @@ export default function DocsOverviewPage() {
         </OList>
 
         <Terminal title="install the agent">
-          {`curl -s https://server.moniple.com/install/agent.yaml \\
-  | sed "s|MONIPLE_SERVER_URL_PLACEHOLDER|https://server.moniple.com|g" \\
-  | sed "s|MONIPLE_API_KEY_PLACEHOLDER|<YOUR_API_KEY>|g" \\
-  | kubectl apply -f -`}
+          {`kubectl apply -f "https://server.moniple.com/install/agent.yaml?key=<YOUR_API_KEY>"`}
         </Terminal>
 
         <Callout tone="info" title="This is the exact command shown in the app">
-          The app fills in your real API key for you. It pulls the manifest from
-          the server, substitutes the server URL and your cluster&apos;s API key
-          into the placeholders, and applies it — no manual editing of YAML.
+          The app fills in your real API key for you. The server renders the
+          manifest with your key and server URL already substituted, so one
+          command works on macOS, Linux and Windows alike — no manual editing
+          of YAML.
         </Callout>
       </Section>
 
