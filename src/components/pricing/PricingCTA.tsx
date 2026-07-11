@@ -20,7 +20,7 @@ interface PricingCTAProps {
  *
  * Pro and Team route users to the app's signup with a `notify=<plan>` hint;
  * the upgrade itself happens in-app (Billing screen → Polar checkout, which
- * needs an authenticated user). Pro starts a 14-day free trial at checkout.
+ * needs an authenticated user). Billed immediately upon subscription.
  *
  * Every click fires a `signup_click` analytics event with the tier, billing
  * cycle and source surface as parameters.

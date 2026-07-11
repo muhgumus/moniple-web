@@ -84,8 +84,7 @@ export default function PricingPage() {
             Simple, Transparent <span className="text-primary">Pricing</span>
           </h1>
           <p className="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">
-            Start free, scale per seat as your team grows. Pro comes with a
-            14-day free trial. On-premise deployment available on Enterprise.
+            Start free, scale per seat as your team grows. On-premise deployment available on Enterprise.
           </p>
         </div>
 
@@ -177,8 +176,8 @@ export default function PricingPage() {
             </div>
             <p className="mt-2 text-xs text-green-400 min-h-[1.5rem]">
               {yearly
-                ? "14-day free trial · $16.67/mo — 2 months free"
-                : "14-day free trial · then billed monthly per seat"}
+                ? "$16.67/mo — 2 months free"
+                : "then billed monthly per seat"}
             </p>
 
             <ul className="mt-6 space-y-3 flex-1">
@@ -196,7 +195,7 @@ export default function PricingPage() {
                 billingCycle={yearly ? "yearly" : "monthly"}
                 className="block w-full text-center rounded-lg px-4 py-3 text-sm font-semibold bg-primary text-white hover:bg-blue-600 transition-colors"
               >
-                Start Free Trial
+                Get Pro
               </PricingCTA>
             </div>
           </div>
@@ -286,9 +285,7 @@ export default function PricingPage() {
 
         {/* Payment note */}
         <p className="mt-10 text-center text-sm text-gray-500 max-w-2xl mx-auto">
-          Pro includes a 14-day free trial — sign up free and upgrade anytime
-          from the Billing screen in the app. Cancel during the trial at no
-          cost.{" "}
+          Sign up free and upgrade anytime from the Billing screen in the app.{" "}
           <Link
             href="/refund-policy"
             className="text-primary hover:text-primary/80 transition-colors underline"
@@ -306,15 +303,13 @@ export default function PricingPage() {
           <div className="space-y-6">
             <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-white">
-                Is there a free trial?
+                Is there a free tier?
               </h3>
               <p className="mt-2 text-gray-400">
-                Yes — <span className="text-gray-200">Pro</span> comes with a
-                14-day free trial on both monthly and yearly billing. You
-                won&apos;t be charged until the trial ends, and you can cancel
-                anytime during the trial at no cost. The{" "}
-                <span className="text-gray-200">Free</span> tier is separate
-                and free forever — no card required.
+                Yes — the{" "}
+                <span className="text-gray-200">Free</span> tier is free
+                forever with no card required. Pro and Team plans are billed
+                immediately upon subscription.
               </p>
             </div>
             <div className="bg-white/5 border border-gray-800 rounded-lg p-6">
