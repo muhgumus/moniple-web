@@ -45,7 +45,7 @@ export default function FaqPage() {
 
         <Faq q="What's the resource footprint?">
           The agent Deployment requests <Strong>100m CPU / 128Mi memory</Strong>{' '}
-          and is capped at 500m / 512Mi. On top of that, the auto-installed stack
+          and is capped at 1000m / 512Mi. On top of that, the auto-installed stack
           adds a single-node VictoriaMetrics, a vmagent, kube-state-metrics, and a
           node-exporter DaemonSet (one lightweight pod per node). If you bring
           your own Prometheus, you skip that stack entirely and only run the
@@ -114,11 +114,15 @@ export default function FaqPage() {
         </Faq>
 
         <Faq q="Do I need to give it cluster-admin?">
-          For the default one-line install, yes — because the agent bootstraps
-          its own metrics stack and must satisfy managed-cluster RBAC-escalation
-          rules. If you pre-install monitoring yourself and disable auto-install,
-          a minimal read-only role (no Secret access, no RBAC write) is available.
-          Details in{' '}
+          To run the install, in practice yes — creating ClusterRoles and
+          ClusterRoleBindings is a privileged operation on most clusters, and
+          the one-line install creates three pairs (for the agent,
+          kube-state-metrics, and vmagent) using your own credentials. The
+          agent itself doesn&apos;t keep anything like that scope afterward:
+          its role is least-privilege — no cluster-wide Secret access, no RBAC
+          write, not even on itself. If you pre-install monitoring yourself and
+          disable auto-install, an even narrower, strictly read-only role is
+          available. Details in{' '}
           <a href="/docs/security" className="text-primary underline hover:text-primary/80">
             Security
           </a>

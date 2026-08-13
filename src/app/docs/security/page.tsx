@@ -50,56 +50,105 @@ export default function SecurityPage() {
 
       <Section title="RBAC scope">
         <P>
-          The default install grants a broad <Code>ClusterRole</Code>, and we
-          want to be upfront about why. With auto-install enabled (the default),
-          the agent bootstraps its own metrics stack — which means creating the
-          kube-state-metrics ServiceAccount, ClusterRole, and binding. On managed
-          clusters (GKE / EKS / AKS), RBAC-escalation protection means a subject
-          can only grant permissions it already holds, so the agent must itself
-          hold every permission kube-state-metrics needs.
+          The default install is <Strong>least privilege</Strong>, and we want
+          to be precise about what that means. The agent holds no cluster-wide
+          access to <Code>Secrets</Code>, and it cannot create or modify any{' '}
+          <Code>ClusterRole</Code> or <Code>ClusterRoleBinding</Code> — not even
+          its own. The monitoring stack it depends on (kube-state-metrics,
+          vmagent) ships its RBAC directly in the install manifest, created with{' '}
+          <Strong>your own credentials</Strong> at <Code>kubectl apply</Code>{' '}
+          time. That is also what satisfies managed-cluster (GKE / EKS / AKS)
+          RBAC-escalation protection now — the install grants those permissions
+          itself, instead of requiring the agent to hold everything it would
+          otherwise need to grant to something else.
         </P>
         <SubSection title="What the default role allows">
           <UList>
             <LI>
-              <Strong>Read-heavy across the cluster:</Strong> get / list / watch
-              on nodes, pods, services, endpoints, namespaces, PVCs, PVs,
-              deployments, daemonsets, replicasets, statefulsets, jobs, HPAs,
-              network policies, ingresses, storage classes, leases, and more —
-              this is what monitoring needs.
+              <Strong>Read-heavy, but a fixed list:</Strong> get / list / watch
+              on namespaces, nodes, pods (plus pod logs and events),
+              deployments, daemonsets, replicasets, statefulsets, jobs,
+              cronjobs, PVCs, and storage classes — exactly what monitoring
+              and the AI Doctor&apos;s diagnostics use, nothing broader.
             </LI>
             <LI>
-              <Strong>Create / update for its own stack:</Strong> to install and
-              reconcile VictoriaMetrics, vmagent, kube-state-metrics, and
-              node-exporter, plus the ConfigMaps and Secrets those components
-              require.
+              <Strong>Install its own stack — namespace-scoped only:</Strong> a{' '}
+              <Code>Role</Code>, not a <Code>ClusterRole</Code>, lets it create
+              and update Deployments, DaemonSets, ServiceAccounts, ConfigMaps,
+              and Services to bootstrap VictoriaMetrics, vmagent,
+              kube-state-metrics, and node-exporter. Its only Secret access
+              (get / create) is scoped to that same single namespace — never
+              cluster-wide.
             </LI>
             <LI>
-              <Strong>RBAC management:</Strong> to provision the ClusterRoles and
-              bindings that the monitoring components run as.
+              <Strong>Five remediation verbs, cluster-wide:</Strong> delete on{' '}
+              <Code>pods</Code>, patch on <Code>nodes</Code>, patch on{' '}
+              <Code>persistentvolumeclaims</Code>, patch on{' '}
+              <Code>deployments</Code>, and delete on <Code>jobs</Code> — the
+              full list, each exercised only for an action you explicitly
+              approve in the app.
             </LI>
             <LI>
-              <Strong>Remediation verbs:</Strong> patch / delete on the specific
-              resource kinds the AI Doctor can act on (pods, deployments, nodes,
-              jobs) — only ever exercised for an action you explicitly approve.
+              <Strong>Read-only RBAC introspection:</Strong> it can ask the API
+              server whether it itself holds a permission (
+              <Code>SelfSubjectAccessReview</Code>) and can read — never
+              write — existing <Code>ClusterRole</Code> /{' '}
+              <Code>ClusterRoleBinding</Code> objects, so it can tell whether
+              the monitoring stack&apos;s RBAC is present instead of guessing
+              through 403s.
             </LI>
           </UList>
         </SubSection>
-        <Callout tone="warning" title="Want least privilege instead?">
-          If you pre-install your own Prometheus-compatible stack and set{' '}
-          <Code>AUTO_INSTALL_MONITORING=false</Code>, the agent doesn&apos;t need
-          any of the create/RBAC/secret grants. A minimal, read-only role variant
-          is provided for exactly this case — no Secret access and no RBAC write.
+        <Callout tone="note" title="It can't widen its own permissions">
+          Earlier agent builds re-applied their own <Code>ClusterRole</Code> on
+          every start, so an image update could silently grant the agent new
+          permissions in your cluster without you ever agreeing to it. That
+          self-heal is gone. If a ClusterRole the monitoring stack depends on is
+          missing, the agent logs exactly which one and tells you to re-apply
+          the install YAML — it never grants itself anything you didn&apos;t
+          explicitly apply.
         </Callout>
+        <Callout tone="warning" title="Installed before August 13, 2026?">
+          This narrowing applies to new installs. A cluster you connected
+          earlier keeps running under its previous, broader role until you
+          re-run your install command — the same one-line{' '}
+          <Code>kubectl apply</Code> shown in the app both narrows the role and
+          updates the agent, in one step.
+        </Callout>
+        <Callout tone="info" title="Want it narrower still?">
+          The default role already avoids cluster-wide Secrets and RBAC write.
+          If you pre-install your own Prometheus-compatible stack and set{' '}
+          <Code>AUTO_INSTALL_MONITORING=false</Code>, a strictly read-only
+          variant is available: every rule either reads cluster state (
+          <Code>get</Code> / <Code>list</Code> / <Code>watch</Code>) or checks
+          the agent&apos;s own permissions — no install Role and none of the
+          five remediation verbs. Approved Doctor actions then fail with a
+          permission error instead of changing anything.
+        </Callout>
+        <SubSection title="kube-state-metrics, scoped down too">
+          <P>
+            The kube-state-metrics instance the agent installs no longer runs
+            with its stock, broad role either. Its <Code>ClusterRole</Code> is
+            scoped from 15 API groups down to the 5 object kinds Moniple
+            actually queries — namespaces, nodes, pods, persistentvolumeclaims,
+            and replicasets, <Code>list</Code> / <Code>watch</Code> only. It
+            never collects <Code>kube_secret_*</Code> or any metric outside
+            that set.
+          </P>
+        </SubSection>
       </Section>
 
       <Section title="Authentication & secrets">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Card title="Per-cluster API key (hashed)">
+          <Card title="Per-cluster API key (hashed + never in plaintext env)">
             Every cluster gets its own API key that authenticates its metrics
             pushes. The server stores only a SHA-256 <Strong>hash</Strong> of the
             key — the plaintext is shown once at creation and is never
-            recoverable from Moniple&apos;s database. Lost it? Regenerate a new
-            one from the app.
+            recoverable from Moniple&apos;s database. In your cluster it is
+            delivered as a Kubernetes <Strong>Secret</Strong>, not a plaintext
+            Deployment env value, so a commonly granted read-only{' '}
+            <Code>get pod -o yaml</Code> can&apos;t expose it. Lost it?
+            Regenerate a new one from the app.
           </Card>
           <Card title="LLM keys encrypted at rest">
             If you bring your own LLM key, it is encrypted with{' '}
@@ -107,6 +156,22 @@ export default function SecurityPage() {
             using a key that lives only in the server&apos;s environment. It is
             decrypted solely to hand to the agent for a diagnostic, and the app
             only ever displays it masked.
+          </Card>
+          <Card title="GitOps token never reaches your cluster">
+            If you connect the AI Doctor&apos;s GitOps remediation, your
+            repository token is encrypted at rest and decrypted only inside the
+            Moniple server process, to make the commit. The agent applies the
+            live Kubernetes patch and reports the result; the server makes the
+            matching Git commit — your token is never sent to the agent and
+            never stored in your cluster.
+          </Card>
+          <Card title="Version-pinned agent image">
+            The install manifest pins the agent to a specific released version
+            — not <Code>:latest</Code> — with{' '}
+            <Code>imagePullPolicy: IfNotPresent</Code>, so a compromised
+            registry tag can&apos;t silently roll out to your cluster on the
+            next pod restart. It only updates when you tap Update in the app or
+            re-run the install command.
           </Card>
           <Card title="TLS everywhere">
             All agent-to-server and app-to-server traffic runs over TLS. The

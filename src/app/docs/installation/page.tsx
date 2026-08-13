@@ -38,13 +38,15 @@ export default function InstallationPage() {
             monitor (check with <Code>kubectl config current-context</Code>).
           </LI>
           <LI>
-            Permission to create a namespace, a <Code>ClusterRole</Code> /{' '}
-            <Code>ClusterRoleBinding</Code>, and workloads — in practice,{' '}
-            <Strong>cluster-admin</Strong> for the install. See{' '}
+            Permission to create a namespace, three{' '}
+            <Code>ClusterRole</Code> / <Code>ClusterRoleBinding</Code> pairs,
+            and workloads — in practice, <Strong>cluster-admin</Strong> for the
+            one-time install. The agent itself runs with a much narrower role
+            afterward. See{' '}
             <a href="/docs/security" className="text-primary underline hover:text-primary/80">
               Security
             </a>{' '}
-            for why the agent needs this scope and how to run a narrower variant.
+            for exactly what it keeps and how to run an even narrower variant.
           </LI>
           <LI>
             Outbound HTTPS from the cluster to <Code>server.moniple.com</Code>.
@@ -72,9 +74,13 @@ export default function InstallationPage() {
         <Callout tone="note" title="Want to review the manifest first?">
           Fetch it without applying:{' '}
           <Code>curl -s https://server.moniple.com/install/agent.yaml</Code>. It
-          is a single YAML document — Namespace, ServiceAccount, ClusterRole,
-          ClusterRoleBinding, Deployment, and Service. Without the{' '}
-          <Code>key</Code> parameter you get the raw template with placeholders.
+          is a single YAML document — 15 resources in total: a Namespace, a
+          Secret for the API key, the agent&apos;s ServiceAccount / ClusterRole
+          / ClusterRoleBinding, a namespace-scoped Role / RoleBinding, matching
+          ServiceAccount / ClusterRole / ClusterRoleBinding sets for
+          kube-state-metrics and vmagent, and the agent Deployment and Service.
+          Without the <Code>key</Code> parameter you get the raw template with
+          placeholders.
         </Callout>
       </Section>
 
@@ -93,13 +99,29 @@ export default function InstallationPage() {
               Moniple creates lives here.
             </LI>
             <LI>
-              <Strong>moniple-agent</Strong> Deployment (1 replica) — collects
-              metrics, pushes them to the server, and runs the AI Doctor engine.
-              Requests 100m CPU / 128Mi memory, limits 500m / 512Mi.
+              <Strong>A Secret</Strong> holding the API key, plus the
+              agent&apos;s <Strong>ServiceAccount + ClusterRole +
+              ClusterRoleBinding</Strong> — a least-privilege role: cluster-wide
+              reads for monitoring and the AI Doctor, and five remediation
+              verbs used only for actions you approve. No cluster-wide Secret
+              access, no RBAC write. A namespace-scoped{' '}
+              <Strong>Role + RoleBinding</Strong> covers installing the
+              monitoring stack (full breakdown in{' '}
+              <a href="/docs/security" className="text-primary underline hover:text-primary/80">
+                Security
+              </a>
+              ).
             </LI>
             <LI>
               <Strong>ServiceAccount + ClusterRole + ClusterRoleBinding</Strong>{' '}
-              — the identity and permissions the agent runs as.
+              for kube-state-metrics and for vmagent — created with your
+              credentials at apply time, so the agent never needs to hold or
+              grant these permissions itself.
+            </LI>
+            <LI>
+              <Strong>moniple-agent</Strong> Deployment (1 replica) — collects
+              metrics, pushes them to the server, and runs the AI Doctor engine.
+              Requests 100m CPU / 128Mi memory, limits 1000m / 512Mi.
             </LI>
             <LI>
               <Strong>ClusterIP Service</Strong> on port 3000 — the
@@ -125,8 +147,9 @@ export default function InstallationPage() {
               kube-state-metrics, and node-exporter.
             </Card>
             <Card title="kube-state-metrics">
-              Exposes Kubernetes object state (pods, deployments, PVCs,
-              namespaces, and more) as metrics.
+              Exposes Kubernetes object state as metrics, scoped to exactly
+              what Moniple queries: namespaces, nodes, pods, PVCs, and
+              replicasets.
             </Card>
             <Card title="node-exporter (DaemonSet)">
               Per-node system metrics (CPU, memory, disk, filesystem). If a
@@ -176,29 +199,43 @@ export default function InstallationPage() {
 
       <Section title="Updating the agent">
         <P>
-          When a newer agent build is available, the app shows an{' '}
-          <Strong>update banner</Strong> on the cluster (in the Doctor area). One
-          tap rolls the agent Deployment to the latest published image — no
-          re-running the install command, no editing YAML.
+          The install manifest pins a specific agent version rather than{' '}
+          <Code>:latest</Code>, so your cluster never changes on its own. When
+          a newer build is available, the app shows an{' '}
+          <Strong>update banner</Strong> on the cluster (in the Doctor area).
+          One tap patches the agent Deployment to that newer pinned version —
+          no re-running the install command, no editing YAML.
         </P>
         <Callout tone="note" title="Prefer manual control?">
           You can also update the agent yourself with a standard{' '}
           <Code>kubectl set image</Code> /{' '}
           <Code>kubectl rollout restart deployment/moniple-agent -n moniple</Code>
-          {' '}against the published <Code>nairotech/moniple-agent</Code> image.
+          {' '}against a published <Code>nairotech/moniple-agent</Code> version
+          tag. Note that this only rolls the image — if your RBAC predates
+          August 2026, re-run the one-line install command instead to pick up
+          the narrower role too (see{' '}
+          <a href="/docs/security" className="text-primary underline hover:text-primary/80">
+            Security
+          </a>
+          ).
         </Callout>
       </Section>
 
       <Section title="Uninstalling">
         <P>
           Removal is complete and immediate: deleting the namespace stops all
-          collection and tears down the agent and its metrics stack. Then remove
-          the cluster-scoped RBAC, which lives outside the namespace.
+          collection and tears down the agent and its metrics stack — the
+          Secret, the namespace-scoped Role/RoleBinding, and every
+          Deployment/DaemonSet all live inside it. Three{' '}
+          <Code>ClusterRole</Code> / <Code>ClusterRoleBinding</Code> pairs ship
+          with the install (the agent&apos;s own, plus kube-state-metrics and
+          vmagent) and live outside the namespace, so remove those explicitly
+          too.
         </P>
         <Terminal title="remove everything">
           {`kubectl delete namespace moniple
-kubectl delete clusterrole moniple-agent
-kubectl delete clusterrolebinding moniple-agent`}
+kubectl delete clusterrole moniple-agent moniple-kube-state-metrics moniple-vmagent
+kubectl delete clusterrolebinding moniple-agent moniple-kube-state-metrics moniple-vmagent`}
         </Terminal>
         <P>
           The moment the agent stops, no further data leaves your cluster. To
